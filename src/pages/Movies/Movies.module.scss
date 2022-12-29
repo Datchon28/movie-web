@@ -1,0 +1,56 @@
+.wrapper {
+  margin-top: 84px;
+}
+
+.content {
+}
+
+.active {
+  background-color: var(--primary-color);
+  color: var(--white-color) !important;
+  border-radius: 10px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0px 30px;
+}
+
+.name-tab {
+  h2 {
+    font-size: 28px;
+    text-decoration: underline;
+  }
+}
+
+.tab-movies {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  padding-right: 14px;
+  margin-left: 10px;
+}
+
+.tab-movies-btn {
+  padding: 8px 16px;
+  margin-right: 16px;
+  background-color: transparent;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.name-tab {
+  font-size: 14px;
+  //   color: var(--white-color);
+}
+
+.filter-btn {
+  padding: 8px 28px;
+  border-radius: 10px;
+}

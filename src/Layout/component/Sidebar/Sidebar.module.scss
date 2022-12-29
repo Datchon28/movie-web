@@ -1,0 +1,118 @@
+.wrapper {
+  width: var(--width-default-sidebar);
+  height: 100%;
+  background-color: var(--default-backgourd-color-content);
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  z-index: 1;
+}
+
+.item {
+  background-color: var(--default-backgourd-color-sidebar);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  height: 100%;
+}
+
+.brand {
+  padding-top: 24px;
+  margin: 0 18px;
+  border-bottom: 1px solid #ccc;
+}
+
+.brand-name {
+  h1 {
+    color: var(--white-color) !important;
+  }
+}
+
+.menu {
+  margin: 20px 10px;
+  border-bottom: 1px solid #ccc;
+  padding: 0px 0px 12px 0;
+}
+
+.link-to {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 3px solid transparent;
+}
+
+.active {
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  color: var(--white-color) !important;
+}
+
+.list-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 6px;
+  margin-left: 5px;
+}
+
+.icon {
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.title {
+  font-size: 16px;
+  margin-left: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.title:nth-child(1) {
+  margin-left: 19px;
+}
+
+.title:nth-child(3) {
+  margin-left: 16px;
+}
+
+.account-title {
+  margin-left: 34px;
+}
+
+.account {
+  margin: 14px 10px 10px 10px;
+  padding: 0px 0px 12px 0;
+}
+
+.sign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 70px;
+  width: 100%;
+}
+
+.sign-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-right: 18px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sign-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.sign-icon {
+  padding-right: 10px;
+}

@@ -1,0 +1,20 @@
+.main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.container {
+  width: calc(100% - calc(var(--width-default-sidebar) + var(--width-default-sidebarforcontent)));
+  height: auto;
+  background-color: var(--default-backgourd-color-content);
+  position: absolute;
+  margin: 0 240px 0 220px;
+}
+
+.content {
+  margin-top: 70px;
+  padding: 0 34px;
+  color: var(--white-color);
+  height: 100%;
+}
