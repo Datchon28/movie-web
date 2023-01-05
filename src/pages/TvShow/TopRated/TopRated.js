@@ -3,7 +3,7 @@ import style from './TopRated.module.scss';
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import MoiveBox from '../../../component/MoiveBox/MoiveBox';
+import MovieBox from '../../../component/MovieBox/MovieBox';
 
 const cx = classNames.bind(style);
 
@@ -28,7 +28,7 @@ function TopRated() {
       <div className={cx('container')}>
         {topRated.map((item, index) => (
           <div className={cx('item')} key={index}>
-            <MoiveBox id={item.id} poster={`https://image.tmdb.org/t/p/original${item.poster_path}`} />
+            <MovieBox id={item.id} poster={`https://image.tmdb.org/t/p/original${item.poster_path}`} />
 
             <div className={cx('info-tv')}>
               <a className={cx('link')} href="none">

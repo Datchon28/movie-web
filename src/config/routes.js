@@ -1,10 +1,12 @@
 const routes = {
   home: '/',
   movies: '/movies//*',
+  moviesItem: '/movies/',
   popular_movie: '/movies/popular',
   nowplaying_movie: '/movies/nowplaying',
   upcoming_movie: '/movies/upcoming',
   toprated_movie: '/movies/toprated',
+
   tv: '/tv//*',
   popular_tv: '/tv/popular',
   nowplaying_tv: '/tv/nowplaying',

@@ -8,6 +8,7 @@ import NowPlaying from './pages/Movies/NowPlaying/NowPlaying';
 import Popular from './pages/Movies/Popular/Popular';
 import TopRated from './pages/Movies/TopRated/TopRated';
 import UpComing from './pages/Movies/UpComing/UpComing';
+import MovieDetail from './component/MovieDetail/MovieDetail';
 
 // TV
 import TvShow from './pages/TvShow/TvShow';
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path={config.routes.home} element={<Home />} />
             <Route path={config.routes.movies} element={<Movies />} />
+            <Route exact path={config.routes.moviesItem} element={<MovieDetail />} />
 
             {/* Movie Tab */}
             <Route

@@ -3,7 +3,7 @@ import style from './NowPlaying.module.scss';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import MoiveBox from '../../../../component/MoiveBox/MoiveBox';
+import MovieBox from '../../../../component/MovieBox/MovieBox';
 
 const cx = classNames.bind(style);
 
@@ -28,7 +28,7 @@ function NowPlaying() {
       {nowPlaying
         .map((item, index) => (
           <div className={cx('item')} key={index}>
-            <MoiveBox
+            <MovieBox
               id={item.id}
               className={cx('now-playing')}
               heart={false}

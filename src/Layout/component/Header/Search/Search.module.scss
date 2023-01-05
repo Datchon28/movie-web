@@ -17,11 +17,27 @@
   list-style: none;
   background-color: var(--primary-color);
   border-radius: 5px;
+  padding: 5px;
+  overflow: hidden scroll;
+  max-height: 400px;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 .search-result-item {
   display: flex;
   align-items: center;
+  padding: 5px;
+  color: var(--white-color);
+  margin: 2px 0;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 }
 
 .icon {

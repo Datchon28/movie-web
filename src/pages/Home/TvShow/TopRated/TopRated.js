@@ -4,7 +4,7 @@ import style from './TopRated.module.scss';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
-import MoiveBox from '../../../../component/MoiveBox/MoiveBox';
+import MovieBox from '../../../../component/MovieBox/MovieBox';
 
 const cx = classNames.bind(style);
 
@@ -28,7 +28,7 @@ function TopRated() {
       <SlickMovie quality={5}>
         {topRated.map((item, index) => (
           <div className={cx('item')} key={index}>
-            <MoiveBox
+            <MovieBox
               id={item.id}
               poster={`https://image.tmdb.org/t/p/original${item.poster_path}`}
               title={item.original_title}

@@ -3,7 +3,7 @@ import style from './UpComing.module.scss';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import MoiveBox from '../../../component/MoiveBox/MoiveBox';
+import MovieBox from '../../../component/MovieBox/MovieBox';
 
 const cx = classNames.bind(style);
 
@@ -30,7 +30,7 @@ function UpComing() {
       <div className={cx('container')}>
         {UpComing.map((item, index) => (
           <div className={cx('item')} key={index}>
-            <MoiveBox
+            <MovieBox
               id={item.id}
               poster={`https://image.tmdb.org/t/p/original${item.poster_path}`}
               vote={item.vote_average}

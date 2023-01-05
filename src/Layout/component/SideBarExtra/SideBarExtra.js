@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import style from './SideBarExtra.module.scss';
 
 import NowPlaying from '../../../pages/Home/Movie/NowPlaying/NowPlaying';
+import WatchList from './WatchList/WatchList';
 
 const cx = classNames.bind(style);
 
@@ -20,6 +21,9 @@ function SideBarExtra() {
       <div className={cx('container')}>
         <div className={cx('content')}>
           <NowPlaying />
+          <div className={cx('watch-list')}>
+            <WatchList />
+          </div>
         </div>
       </div>
     </div>

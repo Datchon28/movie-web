@@ -37,7 +37,6 @@
 }
 
 .container {
-  overflow: hidden scroll;
   position: relative;
   top: 0;
   height: 100%;
@@ -45,4 +44,8 @@
 
 .content {
   position: absolute;
+}
+
+.watch-list {
+  padding: 0 14px;
 }

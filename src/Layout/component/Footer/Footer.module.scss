@@ -1,0 +1,49 @@
+.wrapper {
+  max-height: 150px;
+  height: 100%;
+  background-color: var(--primary-color);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 40px;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.item {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.join {
+  padding: 12px 32px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.link {
+  color: var(--text-color);
+  font-weight: 600;
+  padding: 0px 12px;
+
+  &:hover {
+    color: var(--white-color) !important;
+    text-decoration: underline;
+  }
+}
