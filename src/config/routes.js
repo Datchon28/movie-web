@@ -1,7 +1,6 @@
 const routes = {
   home: '/',
-  movies: '/movies//*',
-  moviesItem: '/movies/',
+  movies: '/movies/',
   popular_movie: '/movies/popular',
   nowplaying_movie: '/movies/nowplaying',
   upcoming_movie: '/movies/upcoming',

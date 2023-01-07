@@ -8,7 +8,7 @@ import { useRef } from 'react';
 
 const cx = classNames.bind(style);
 
-function MoiveBox({ id, className = 'wrapper', poster, title, genres, to }) {
+function MoiveBox({ id, className = 'wrapper', poster, title, genres, to, interactive = true }) {
   const itemRef = useRef();
 
   return (
@@ -17,18 +17,20 @@ function MoiveBox({ id, className = 'wrapper', poster, title, genres, to }) {
         <Link className={cx('link-movie')} to={to}>
           <img className={cx('backdrop-img')} alt="bdrop" src={poster} />
         </Link>
-        <div className={cx('interactive')}>
-          <div className={cx('menu-child')}>
-            <button className={cx('menu-child-btn')}>
-              <FontAwesomeIcon icon={faEllipsisVertical} />
-            </button>
+        {interactive && (
+          <div className={cx('interactive')}>
+            <div className={cx('menu-child')}>
+              <button className={cx('menu-child-btn')}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </button>
+            </div>
+            <div className={cx('add-list')}>
+              <button className={cx('add-list-btn')}>
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+            </div>
           </div>
-          <div className={cx('add-list')}>
-            <button className={cx('add-list-btn')}>
-              <FontAwesomeIcon icon={faPlus} />
-            </button>
-          </div>
-        </div>
+        )}
       </div>
       <div className={cx('info-movie')}>
         <span className={cx('title-movie')}>{title}</span>

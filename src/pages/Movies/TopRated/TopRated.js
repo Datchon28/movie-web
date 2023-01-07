@@ -10,19 +10,28 @@ const cx = classNames.bind(style);
 function TopRated() {
   const [topRated, setTopRated] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLoadMore = () => {
-    setPage(page + 1);
+    setPage((page) => page + 1);
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&language=en-US&page=${page}`,
-      )
-      .then((data) => {
-        setTopRated(data.data.results);
-      });
+    const Items = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/top_rated?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&language=en-US&page=${page}`,
+        );
+        setTopRated((topRated) => [...topRated, ...response.data.results]);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    Items();
   }, [page]);
 
   return (
@@ -49,7 +58,7 @@ function TopRated() {
 
       <div className={cx('load-more')}>
         <button onClick={handleLoadMore} className={cx('load-more-btn')}>
-          LOAD MORE
+          {isLoading ? 'Loading..' : 'LOAD MORE'}
         </button>
       </div>
     </div>

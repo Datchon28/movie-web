@@ -4,6 +4,8 @@ import style from './NowPlaying.module.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
+import { Link } from 'react-router-dom';
+import config from '../../../../config';
 
 const cx = classNames.bind(style);
 
@@ -34,7 +36,7 @@ function NowPlaying() {
               heart={false}
               poster={`https://image.tmdb.org/t/p/original${item.poster_path}`}
               slideScroll={5}
-              vote_on={false}
+              interactive={false}
             />
 
             <div className={cx('info')}>
@@ -46,7 +48,11 @@ function NowPlaying() {
         .slice(0, 3)}
 
       <div className={cx('see-more')}>
-        <button className={cx('see-more-btn')}>See More</button>
+        <button className={cx('see-more-btn')}>
+          <Link className={cx('see-more-link')} to={config.routes.nowplaying_movie}>
+            See More
+          </Link>
+        </button>
       </div>
     </div>
   );
