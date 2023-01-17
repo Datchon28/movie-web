@@ -5,6 +5,7 @@ const routes = {
   nowplaying_movie: '/movies/nowplaying',
   upcoming_movie: '/movies/upcoming',
   toprated_movie: '/movies/toprated',
+  movieItem: '/movies/:idItem',
 
   tv: '/tv//*',
   popular_tv: '/tv/popular',

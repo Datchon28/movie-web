@@ -14,11 +14,9 @@ function DefaultLayout({ children }) {
       <Sidebar />
       <div className={cx('container')}>
         <Header />
-        <div className={cx('content')}>
-          {children}
-          <div className={cx('footer')}>
-            <Footer />
-          </div>
+        <div className={cx('content')}>{children}</div>
+        <div className={cx('footer')}>
+          <Footer />
         </div>
       </div>
       <SideBarExtra />

@@ -37,7 +37,6 @@ function TopRated() {
               title={item.original_title}
               slideScroll={5}
               vote={item.vote_average}
-              to={config.routes.moviesItem}
             />
           </div>
         ))}

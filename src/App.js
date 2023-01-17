@@ -22,8 +22,8 @@ function App() {
         <DefaultLayout>
           <Routes>
             <Route path={config.routes.home} element={<Home />} />
-            <Route path={config.routes.movies} element={<Movies />} />
-            <Route exact path={config.routes.moviesItem} element={<MovieDetail />} />
+            <Route exact path={config.routes.movies} element={<Movies />}></Route>
+            <Route path={config.routes.movieItem} element={<MovieDetail />} />
 
             {/* Movie Tab */}
             <Route
