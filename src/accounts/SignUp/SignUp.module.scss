@@ -1,0 +1,104 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title {
+  padding-top: 40px;
+  margin-bottom: 18px;
+  font-size: 26px;
+
+  .brand {
+    font-size: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  h2 {
+    font-size: 50px;
+    text-decoration: underline;
+  }
+}
+
+.table-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.name-account,
+.password-account {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title-info {
+  margin-top: 20px;
+  font-size: 15px;
+  margin-left: 4px;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 490px;
+  height: 38px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+
+  &:focus {
+    border: 1px solid var(--primary-color);
+  }
+}
+
+.see-pass {
+  position: absolute;
+  right: w;
+  right: 2%;
+  top: 66%;
+  color: #000;
+  cursor: pointer;
+}
+
+.button {
+  margin-top: 16px;
+}
+
+.check-condition {
+  font-size: 14px;
+}
+
+.check {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.create-account-btn {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  box-shadow: 1px 20px 40px -16px var(--primary-color);
+
+  &:hover {
+    background-color: #d34c45;
+  }
+}
+
+.link-to-signin {
+  margin-top: 20px;
+}

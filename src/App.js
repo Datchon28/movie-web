@@ -14,6 +14,8 @@ import MovieDetail from './component/MovieDetail/MovieDetail';
 import TvShow from './pages/TvShow/TvShow';
 import TvPopular from './pages/TvShow/Popular/Popular';
 import TvToprated from './pages/TvShow/TopRated/TopRated';
+import SignUp from './accounts/SignUp/SignUp';
+import SignIn from './accounts/SignIn/SignIn';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route path={config.routes.home} element={<Home />} />
             <Route exact path={config.routes.movies} element={<Movies />}></Route>
             <Route path={config.routes.movieItem} element={<MovieDetail />} />
+            <Route path={config.routes.signup} element={<SignUp />} />
+            <Route path={config.routes.signin} element={<SignIn />} />
 
             {/* Movie Tab */}
             <Route

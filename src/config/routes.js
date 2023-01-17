@@ -13,6 +13,10 @@ const routes = {
   upcoming_tv: '/tv/upcoming',
   toprated_tv: '/tv/toprated',
   favourite: '/favourite',
+
+  // Accounts
+  signup: '/signup',
+  signin: '/signin',
 };
 
 export default routes;

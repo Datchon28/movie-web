@@ -40,8 +40,8 @@ function Sidebar() {
           <div className={cx('account-title')}>
             <h2>Account</h2>
           </div>
-          <MenuItem to="/signout" title="New Account " icon={<FontAwesomeIcon icon={faUserPlus} />} />
-          <MenuItem to="/signin" title="Sign In" icon={<FontAwesomeIcon icon={faUser} />} />
+          <MenuItem to={config.routes.signup} title="New Account " icon={<FontAwesomeIcon icon={faUserPlus} />} />
+          {/* <MenuItem to="/signin" title="Sign In" icon={<FontAwesomeIcon icon={faUser} />} /> */}
           <MenuItem to="/setting" title="Setting" icon={<FontAwesomeIcon icon={faGear} />} />
         </ul>
         <div className={cx('sign')}>
@@ -50,7 +50,7 @@ function Sidebar() {
               <FontAwesomeIcon icon={faSignOut} />
             </span>
 
-            <span className={cx('sign-title')}>LogOut</span>
+            <span className={cx('sign-title')}>Login</span>
           </button>
         </div>
       </div>
