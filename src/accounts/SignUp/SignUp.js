@@ -33,7 +33,7 @@ function SignUp() {
 
         <label className={cx('password-account')}>
           <span className={cx('title-info')}>Password {'(6 characters minimum)'}</span>
-          <input className={cx('input')} type="password" placeholder="6 characters minimum" />
+          <input className={cx('input')} type={Seepass ? 'text' : 'password'} placeholder="6 characters minimum" />
           <span className={cx('see-pass')} onClick={handleSeepass}>
             {Seepass ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
           </span>
@@ -41,7 +41,7 @@ function SignUp() {
 
         <label className={cx('password-account')}>
           <span className={cx('title-info')}>Password Confirm</span>
-          <input className={cx('input')} type="password" placeholder="6 characters minimum" />
+          <input className={cx('input')} type={Seepass ? 'text' : 'password'} placeholder="6 characters minimum" />
           <span className={cx('see-pass')} onClick={handleSeepass}>
             {Seepass ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
           </span>
