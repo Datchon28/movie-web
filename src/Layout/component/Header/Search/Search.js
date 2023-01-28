@@ -39,7 +39,7 @@ function Search() {
       setLoading(true);
       await axios
         .get(
-          `https://api.themoviedb.org/3/search/keyword?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&page=1&query=${debounce}`,
+          `https://api.themoviedb.org/3/search/movie?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&language=en-US&query=${debounce}&page=1&include_adult=false`,
         )
         .then((data) => {
           setSearchResult(data.data.results);
@@ -67,7 +67,7 @@ function Search() {
                     <span className={cx('icon')}>
                       <FontAwesomeIcon icon={faSearch} />
                     </span>
-                    <span className={cx('search-result-text')}>{item.name}</span>
+                    <span className={cx('search-result-text')}>{item.original_title}</span>
                   </li>
                 ))}
             </ul>

@@ -48,7 +48,7 @@ function Popular() {
 
             <div className={cx('info-tv')}>
               <a className={cx('link')} href="none">
-                <span className={cx('tv-name')}>{item.original_title}</span>
+                <span className={cx('tv-name')}>{item.original_name}</span>
               </a>
               <span className={cx('popularity')}>{item.popularity}</span>
             </div>

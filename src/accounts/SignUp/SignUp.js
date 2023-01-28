@@ -1,4 +1,4 @@
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faLeaf } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
@@ -9,10 +9,24 @@ const cx = classNames.bind(style);
 
 function SignUp() {
   const [Seepass, setSeePass] = useState(false);
+  const [value, SetValue] = useState('');
+  const [checkLenght, setCheckLenght] = useState(true);
 
   const handleSeepass = () => {
     setSeePass(!Seepass);
   };
+
+  // Rules
+  const checkLength = (e) => {
+    const value = e.target.value;
+    SetValue(value);
+    if (value.length >= 4 || value.length === 0) {
+      setCheckLenght(true);
+    } else {
+      setCheckLenght(false);
+    }
+  };
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
@@ -23,7 +37,14 @@ function SignUp() {
       <div className={cx('table-info')}>
         <label className={cx('name-account')}>
           <span className={cx('title-info')}>Account</span>
-          <input className={cx('input')} type="text" placeholder=" 4 charaters minimum" />
+          <input
+            onChange={checkLength}
+            value={value}
+            className={cx('input')}
+            type="text"
+            placeholder=" 4 charaters minimum"
+          />
+          <span className={cx('alert-error')}>{checkLenght === false && 'invalid (at least 4 charaters minimum)'}</span>
         </label>
 
         <label className={cx('password-account')}>

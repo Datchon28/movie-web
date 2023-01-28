@@ -102,3 +102,13 @@
 .link-to-signin {
   margin-top: 20px;
 }
+
+.alert-error {
+  color: var(--primary-color);
+  font-size: 14px;
+  padding-top: 5px;
+}
+
+.alert-error::first-letter {
+  text-transform: uppercase;
+}

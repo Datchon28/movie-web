@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import style from './SlickMovie.module.scss';
+import '../SlickMovie/SlickMovie.css';
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
