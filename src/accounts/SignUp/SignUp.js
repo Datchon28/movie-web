@@ -10,7 +10,11 @@ const cx = classNames.bind(style);
 function SignUp() {
   const [Seepass, setSeePass] = useState(false);
   const [value, SetValue] = useState('');
+  const [email, SetEmail] = useState('');
+  const [password, SetPassWord] = useState('');
+  const [checkEmailValid, setCheckEmailValid] = useState(true);
   const [checkLenght, setCheckLenght] = useState(true);
+  const [checkPassValid, setCheckPassValid] = useState(true);
 
   const handleSeepass = () => {
     setSeePass(!Seepass);
@@ -24,6 +28,29 @@ function SignUp() {
       setCheckLenght(true);
     } else {
       setCheckLenght(false);
+    }
+  };
+
+  const checkValidEmail = (e) => {
+    const valueEmail = e.target.value;
+    SetEmail(valueEmail);
+    const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (valueEmail.match(valid) || valueEmail.length === 0) {
+      setCheckEmailValid(true);
+    } else {
+      setCheckEmailValid(false);
+    }
+  };
+
+  const checkPassWord = (e) => {
+    const valuePass = e.target.value;
+    SetPassWord(valuePass);
+    const validPass = /^[A-Za-z]\w{7,14}$/;
+
+    if (valuePass.match(validPass) || valuePass.length === 0) {
+      setCheckPassValid(true);
+    } else {
+      setCheckPassValid(false);
     }
   };
 
@@ -49,15 +76,29 @@ function SignUp() {
 
         <label className={cx('password-account')}>
           <span className={cx('title-info')}>Email</span>
-          <input className={cx('input')} type="email" placeholder=" abc@gmail.com" />
+          <input
+            onChange={checkValidEmail}
+            value={email}
+            className={cx('input')}
+            type="email"
+            placeholder=" abc@gmail.com"
+          />
+          <span className={cx('alert-error')}>{checkEmailValid === false && 'invalid Email'}</span>
         </label>
 
         <label className={cx('password-account')}>
           <span className={cx('title-info')}>Password {'(6 characters minimum)'}</span>
-          <input className={cx('input')} type={Seepass ? 'text' : 'password'} placeholder="6 characters minimum" />
-          <span className={cx('see-pass')} onClick={handleSeepass}>
+          <input
+            value={password}
+            onChange={checkPassWord}
+            className={cx('input')}
+            type={Seepass ? 'text' : 'password'}
+            placeholder="6 characters minimum"
+          />
+          <span className={cx('see-pass', checkPassValid === false && 'see-fixed')} onClick={handleSeepass}>
             {Seepass ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
           </span>
+          <span className={cx('alert-error')}>{checkPassValid === false && 'invalid Password'}</span>
         </label>
 
         <label className={cx('password-account')}>
@@ -66,6 +107,9 @@ function SignUp() {
           <span className={cx('see-pass')} onClick={handleSeepass}>
             {Seepass ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
           </span>
+          {/* <span className={cx('alert-error')}>
+            {checkPassValid === false && 'Password Confirm does not match Your PassWord'}
+          </span> */}
         </label>
       </div>
 

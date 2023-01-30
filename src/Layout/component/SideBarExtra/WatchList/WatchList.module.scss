@@ -5,6 +5,11 @@
   margin-top: 20px;
 }
 
+.list {
+  max-height: 408px;
+  overflow: hidden scroll;
+}
+
 .poster {
   border-radius: 5px;
   overflow: hidden;

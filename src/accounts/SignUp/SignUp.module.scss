@@ -62,11 +62,14 @@
 
 .see-pass {
   position: absolute;
-  right: w;
   right: 2%;
-  top: 66%;
+  top: 63%;
   color: #000;
   cursor: pointer;
+}
+
+.see-fixed {
+  top: 50%;
 }
 
 .button {
