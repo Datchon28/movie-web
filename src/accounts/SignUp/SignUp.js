@@ -1,4 +1,4 @@
-import { faEye, faEyeSlash, faLeaf } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faEye, faEyeSlash, faLeaf, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
@@ -71,6 +71,9 @@ function SignUp() {
             type="text"
             placeholder=" 4 charaters minimum"
           />
+          <span className={cx('icon', checkLenght === false && 'icon-fixed')}>
+            <FontAwesomeIcon icon={faUser} />
+          </span>
           <span className={cx('alert-error')}>{checkLenght === false && 'invalid (at least 4 charaters minimum)'}</span>
         </label>
 
@@ -83,6 +86,9 @@ function SignUp() {
             type="email"
             placeholder=" abc@gmail.com"
           />
+          <span className={cx('icon', checkEmailValid === false && 'icon-fixed')}>
+            <FontAwesomeIcon icon={faEnvelope} />
+          </span>
           <span className={cx('alert-error')}>{checkEmailValid === false && 'invalid Email'}</span>
         </label>
 
@@ -98,6 +104,9 @@ function SignUp() {
           <span className={cx('see-pass', checkPassValid === false && 'see-fixed')} onClick={handleSeepass}>
             {Seepass ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
           </span>
+          <span className={cx('icon', checkPassValid === false && 'icon-fixed')}>
+            <FontAwesomeIcon icon={faLock} />
+          </span>
           <span className={cx('alert-error')}>{checkPassValid === false && 'invalid Password'}</span>
         </label>
 
@@ -106,6 +115,9 @@ function SignUp() {
           <input className={cx('input')} type={Seepass ? 'text' : 'password'} placeholder="6 characters minimum" />
           <span className={cx('see-pass')} onClick={handleSeepass}>
             {Seepass ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
+          </span>
+          <span className={cx('icon')}>
+            <FontAwesomeIcon icon={faLock} />
           </span>
           {/* <span className={cx('alert-error')}>
             {checkPassValid === false && 'Password Confirm does not match Your PassWord'}

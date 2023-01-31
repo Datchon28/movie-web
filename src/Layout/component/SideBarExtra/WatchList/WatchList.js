@@ -1,14 +1,17 @@
 import classNames from 'classnames/bind';
 import style from './WatchList.module.scss';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { selectId } from '../../../../store/IdStore';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(style);
 
 function WatchList() {
+  const i = useRef();
   const [item, setItem] = useState([]);
   const id = useSelector(selectId);
 
@@ -25,6 +28,11 @@ function WatchList() {
     callItem();
   }, [id]);
 
+  // const deleteItem = (e) => {
+  //   const removed = i.current;
+  //   item.splice(removed, 1);
+  // };
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
@@ -33,9 +41,13 @@ function WatchList() {
       <div className={cx('list')}>
         {id !== 0 &&
           item.map((movie, index) => (
-            <div className={cx('container')} key={index}>
+            <div className={cx('container')} ref={i} key={index}>
               <div className={cx('poster')}>
-                <img className={cx('img')} src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
+                <img
+                  className={cx('img')}
+                  alt="poster"
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                />
               </div>
               <div className={cx('info')}>
                 <div className={cx('name')}>
@@ -44,6 +56,10 @@ function WatchList() {
 
                 <div className={cx('vote')}>
                   <span className={cx('vote-user')}>{movie.vote_average}</span>
+
+                  <button className={cx('delete-item')}>
+                    <FontAwesomeIcon icon={faClose} />
+                  </button>
                 </div>
               </div>
             </div>

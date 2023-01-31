@@ -10,7 +10,7 @@ function Footer() {
     <div className={cx('wrapper')}>
       <ul className={cx('list')}>
         <li className={cx('item', 'logo-brand')}>
-          <h1 className={cx('brand')}>FAT CAT</h1>
+          <h1 className={cx('brand')}>FC</h1>
           <button className={cx('join')}>Join With Us</button>
         </li>
         <li className={cx('item', 'info-brand')}>

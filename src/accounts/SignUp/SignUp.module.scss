@@ -49,15 +49,29 @@
 }
 
 .input {
+  position: relative;
   width: 490px;
   height: 38px;
   padding: 5px;
+  padding-left: 28px;
   font-size: 16px;
   border-radius: 5px;
 
   &:focus {
     border: 1px solid var(--primary-color);
   }
+}
+
+.icon {
+  position: absolute;
+  left: 0;
+  top: 60%;
+  margin-left: 5px;
+  color: var(--black-color);
+}
+
+.icon-fixed {
+  top: 50%;
 }
 
 .see-pass {
