@@ -4,6 +4,7 @@ import style from './MovieDetail.module.scss';
 import { faBookBookmark, faHeart, faPlay, faShare, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SlickMovie from '../../component/SlickMovie';
+import MovieBox from '../MovieBox/MovieBox';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
@@ -14,17 +15,41 @@ const cx = classNames.bind(style);
 
 function MovieDetail() {
   const [item, setItem] = useState([]);
+  const [companie, setCompanies] = useState([]);
+  const [cast, setCast] = useState([]);
+  const [similar, setSimilar] = useState([]);
 
   const id = useSelector(selectId);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&append_to_response=videos`,
-      )
-      .then((res) => {
-        setItem(res.data);
-      });
+    if (id === 0) {
+      return;
+    }
+    const fetch = async () => {
+      await axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&append_to_response=videos`,
+        )
+        .then((res) => {
+          setItem(res.data);
+          setCompanies(res.data.production_companies);
+        });
+
+      await axios
+        .get(`http://api.themoviedb.org/3/movie/${id}/casts?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267`)
+        .then((res) => {
+          setCast(res.data.cast);
+        });
+
+      await axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${id}/similar?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&language=en-US&page=1`,
+        )
+        .then((res) => {
+          setSimilar(res.data.results);
+        });
+    };
+    fetch();
   }, [id]);
 
   return (
@@ -96,12 +121,67 @@ function MovieDetail() {
           </div>
 
           <div className={cx('content')}>
-            <div className={cx('actor')}>
-              <h3 className={cx('actor-title')}>Cast</h3>
+            <div className={cx('companies')}>
+              <h3 className={cx('companies-title')}>Companies</h3>
 
-              <div className={cx('actor-list')}></div>
+              <ul className={cx('companies-list')}>
+                {companie.map((comp, index) => (
+                  <li id={comp.id} key={index} className={cx('companies-item')}>
+                    <img
+                      className={cx('logo-companies')}
+                      alt="poster"
+                      src={`https://image.tmdb.org/t/p/original${comp.logo_path}`}
+                    />
+                    <span className={cx('companies-name')}>{comp.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={cx('cast')}>
+              <h3 className={cx('cast-title')}>Cast</h3>
+
+              <ul className={cx('cast-list')}>
+                {cast
+                  .map((cst, index) => (
+                    <li id={cst.id} key={index} className={cx('cast-item')}>
+                      <img
+                        className={cx('logo-cast')}
+                        alt="poster"
+                        src={`https://image.tmdb.org/t/p/original${cst.profile_path}`}
+                      />
+
+                      <div className={cx('info-cast')}>
+                        <span className={cx('cast-name')}>
+                          {cst.original_name} | {cst.known_for_department}
+                        </span>
+                        <span className={cx('cast-role')}>{cst.character}</span>
+                      </div>
+                    </li>
+                  ))
+                  .splice(0, 10)}
+              </ul>
+
+              <div className={cx('show-all-cast')}>
+                <button className={cx('show-all-cast-btn')}>Show all</button>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className={cx('similar-movies')}>
+        <h3 className={cx('similar-movies-title')}>Similar Movie</h3>
+        <div className={cx('similar-list')}>
+          <SlickMovie quality={5} slideScroll={2}>
+            {similar.map((simi, index) => (
+              <MovieBox
+                key={index}
+                className={cx('similar-item')}
+                poster={`https://image.tmdb.org/t/p/original${simi.poster_path}`}
+              />
+            ))}
+          </SlickMovie>
         </div>
       </div>
     </div>

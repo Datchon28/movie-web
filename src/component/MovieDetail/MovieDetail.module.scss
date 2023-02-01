@@ -159,8 +159,78 @@
 
 .content {
   margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: centers;
 }
 
 .actor-title {
   font-size: 28px;
+}
+
+.companies-list {
+  list-style: none;
+  margin-top: 18px;
+}
+
+.companies-item {
+  display: flex;
+  align-items: center;
+}
+
+.logo-companies {
+  width: 90px;
+  margin-right: 18px;
+}
+
+.cast {
+  width: 50%;
+}
+
+.cast-title {
+  text-align: center;
+}
+
+.cast-list {
+  max-height: 224px;
+  height: 100%;
+  overflow: hidden scroll;
+}
+
+.cast-item {
+  display: flex;
+  align-items: center;
+}
+
+.logo-cast {
+  width: 18%;
+  padding: 12px 6px;
+}
+
+.info-cast {
+  margin-left: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-all-cast {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-all-cast-btn {
+  padding: 6px 12px;
+}
+
+.similar-movies-title {
+  padding: 0 14px;
+  margin-bottom: 20px;
+}
+
+.similar-item {
+  padding: 0 14px;
 }
