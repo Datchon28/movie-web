@@ -16,6 +16,10 @@ function WatchList() {
   const id = useSelector(selectId);
 
   useEffect(() => {
+    if (id === 0) {
+      return;
+    }
+
     const callItem = async () => {
       const response = await axios
         .get(
@@ -28,10 +32,15 @@ function WatchList() {
     callItem();
   }, [id]);
 
-  // const deleteItem = (e) => {
-  //   const removed = i.current;
-  //   item.splice(removed, 1);
-  // };
+  const deleteItem = (value) => {
+    const index = item.indexOf(value);
+    if (index > -1) {
+      item.splice(index, 1);
+    }
+    return item;
+  };
+
+  console.log(item);
 
   return (
     <div className={cx('wrapper')}>
@@ -57,7 +66,7 @@ function WatchList() {
                 <div className={cx('vote')}>
                   <span className={cx('vote-user')}>{movie.vote_average}</span>
 
-                  <button className={cx('delete-item')}>
+                  <button className={cx('delete-item')} onClick={deleteItem}>
                     <FontAwesomeIcon icon={faClose} />
                   </button>
                 </div>
