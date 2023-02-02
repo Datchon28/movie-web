@@ -40,8 +40,6 @@ function WatchList() {
     return item;
   };
 
-  console.log(item);
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title')}>

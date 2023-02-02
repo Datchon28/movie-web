@@ -12,10 +12,13 @@ export const IdStore = createSlice({
     updateId(state, action) {
       state.id = action.payload;
     },
+    updateIdWatchlist(state, action) {
+      state.id = action.payload;
+    },
   },
 });
 
-export const { updateId } = IdStore.actions;
+export const { updateId, updateIdWatchlist } = IdStore.actions;
 
 export const selectId = (state) => state.iditem.id;
 

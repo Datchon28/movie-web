@@ -25,6 +25,7 @@ function MovieDetail() {
     if (id === 0) {
       return;
     }
+
     const fetch = async () => {
       await axios
         .get(
@@ -49,6 +50,7 @@ function MovieDetail() {
           setSimilar(res.data.results);
         });
     };
+
     fetch();
   }, [id]);
 
@@ -137,36 +139,40 @@ function MovieDetail() {
                 ))}
               </ul>
             </div>
-
-            <div className={cx('cast')}>
-              <h3 className={cx('cast-title')}>Cast</h3>
-
-              <ul className={cx('cast-list')}>
-                {cast
-                  .map((cst, index) => (
-                    <li id={cst.id} key={index} className={cx('cast-item')}>
-                      <img
-                        className={cx('logo-cast')}
-                        alt="poster"
-                        src={`https://image.tmdb.org/t/p/original${cst.profile_path}`}
-                      />
-
-                      <div className={cx('info-cast')}>
-                        <span className={cx('cast-name')}>
-                          {cst.original_name} | {cst.known_for_department}
-                        </span>
-                        <span className={cx('cast-role')}>{cst.character}</span>
-                      </div>
-                    </li>
-                  ))
-                  .splice(0, 10)}
-              </ul>
-
-              <div className={cx('show-all-cast')}>
-                <button className={cx('show-all-cast-btn')}>Show all</button>
-              </div>
-            </div>
           </div>
+        </div>
+      </div>
+
+      <div className={cx('cast')}>
+        <h3 className={cx('cast-title')}>Cast % Crew</h3>
+
+        <div className={cx('cast-list')}>
+          <SlickMovie quality={5} slideScroll={3}>
+            {cast
+              .map((cst, index) => (
+                <div id={cst.id} key={index} className={cx('cast-item')}>
+                  <div className={cx('cast-card')}>
+                    <img
+                      className={cx('logo-cast')}
+                      alt="poster"
+                      src={`https://image.tmdb.org/t/p/original${cst.profile_path}`}
+                    />
+
+                    <div className={cx('info-cast')}>
+                      <span className={cx('cast-name')}>
+                        {cst.original_name} <br></br> {cst.known_for_department}
+                      </span>
+                      <span className={cx('cast-role')}>{cst.character}</span>
+                    </div>
+                  </div>
+                </div>
+              ))
+              .splice(0, 15)}
+          </SlickMovie>
+        </div>
+
+        <div className={cx('show-all-cast')}>
+          <button className={cx('show-all-cast-btn')}>Show all</button>
         </div>
       </div>
 
@@ -176,6 +182,7 @@ function MovieDetail() {
           <SlickMovie quality={5} slideScroll={2}>
             {similar.map((simi, index) => (
               <MovieBox
+                id={simi.id}
                 key={index}
                 className={cx('similar-item')}
                 poster={`https://image.tmdb.org/t/p/original${simi.poster_path}`}
