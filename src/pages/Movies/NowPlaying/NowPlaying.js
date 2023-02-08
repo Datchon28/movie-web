@@ -3,7 +3,7 @@ import style from './NowPlaying.module.scss';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import MovieBox from '../../../component/MovieBox/MovieBox';
+import MovieCard from '../../../component/MovieCard/MovieCard';
 
 const cx = classNames.bind(style);
 
@@ -38,21 +38,14 @@ function NowPlaying() {
     <div className={cx('wrapper')}>
       <div className={cx('container')}>
         {nowPlaying.map((item, index) => (
-          <div className={cx('item')} key={index}>
-            <MovieBox
-              id={item.id}
-              className={cx('popular')}
-              poster={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-              vote={item.vote_average}
-            />
-
-            <div className={cx('info-movie')}>
-              <a className={cx('link')} href="none">
-                <span className={cx('movie-name')}>{item.original_title}</span>
-              </a>
-              <span className={cx('popularity')}>{item.vote_average}</span>
-            </div>
-          </div>
+          <MovieCard
+            key={index}
+            id={item.id}
+            poster={item.poster_path}
+            vote={item.vote_average}
+            title={item.original_title}
+            popularrity={item.popularity}
+          />
         ))}
       </div>
 

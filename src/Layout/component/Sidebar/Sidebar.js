@@ -26,7 +26,9 @@ function Sidebar() {
         <div className={cx('brand')}>
           <div className={cx('brand-name')}>
             <Link to="/">
-              <h1>FAT CAT</h1>
+              <h1>
+                FAT CAT <br></br> Movie
+              </h1>
             </Link>
           </div>
         </div>

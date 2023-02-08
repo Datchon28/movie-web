@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { selectId } from '../../store/IdStore';
 import TippyNote from '../TippyNote/TippyNote';
+import Modal from '../Modal/Modal';
 
 const cx = classNames.bind(style);
 
@@ -18,6 +19,7 @@ function MovieDetail() {
   const [companie, setCompanies] = useState([]);
   const [cast, setCast] = useState([]);
   const [similar, setSimilar] = useState([]);
+  const [allCast, setAllCast] = useState(false);
 
   const id = useSelector(selectId);
 
@@ -54,6 +56,10 @@ function MovieDetail() {
     fetch();
   }, [id]);
 
+  const showAllCast = () => {
+    setAllCast(true);
+  };
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('backdrop')}>
@@ -77,7 +83,7 @@ function MovieDetail() {
             <span className={cx('tag-line')}>{item.tagline}</span>
             <span className={cx('release-date')}>{item.release_date}</span>
             <span className={cx('timer')}>1h30</span>
-            <span className={cx('overview')}>OVERVIEW : {item.overview}</span>
+            <span className={cx('overview')}>OverView : {item.overview}</span>
           </div>
 
           <div className={cx('interactives')}>
@@ -144,7 +150,7 @@ function MovieDetail() {
       </div>
 
       <div className={cx('cast')}>
-        <h3 className={cx('cast-title')}>Cast % Crew</h3>
+        <h3 className={cx('cast-title')}>Cast & Crew</h3>
 
         <div className={cx('cast-list')}>
           <SlickMovie quality={5} slideScroll={3}>
@@ -172,7 +178,34 @@ function MovieDetail() {
         </div>
 
         <div className={cx('show-all-cast')}>
-          <button className={cx('show-all-cast-btn')}>Show all</button>
+          <button className={cx('show-all-cast-btn')} onClick={showAllCast}>
+            Show all
+          </button>
+          {allCast && (
+            <Modal>
+              <div className={cx('all-cast')}>
+                {cast.map((ct, index) => (
+                  <div className={cx('all-cast-list')} key={index}>
+                    <div className={cx('info-cast--card')}>
+                      <img
+                        className={cx('avar-cast')}
+                        alt="avar"
+                        src={`https://image.tmdb.org/t/p/original${ct.profile_path}`}
+                      ></img>
+                      <span className={cx('full-name-cast')}>
+                        FullName: <br></br>
+                        {ct.original_name}
+                      </span>
+                    </div>
+                    <span className={cx('name-character')}>
+                      Character: <br></br>
+                      {ct.character}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
 

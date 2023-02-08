@@ -22,7 +22,7 @@ function Trending() {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
-        <h2>TV : Trending</h2>
+        <h2>Movies : Trending</h2>
         <span>See all</span>
       </div>
       <SlickMovie quality={3}>

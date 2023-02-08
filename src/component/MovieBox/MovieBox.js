@@ -14,6 +14,7 @@ const cx = classNames.bind(style);
 
 function MoiveBox({ id, className = 'wrapper', poster, title, genres, to, interactive = true }) {
   const itemRef = useRef();
+  const [openMenuChild, setOpenMenuChild] = useState(false);
 
   const dispatch = useDispatch();
   const [currentId, setCurrentId] = useState();
@@ -28,6 +29,10 @@ function MoiveBox({ id, className = 'wrapper', poster, title, genres, to, intera
     const id = itemRef.current.id;
     dispatch(updateIdWatchlist(id));
     setCurrentId(id);
+  };
+
+  const handleOpenMenuChild = () => {
+    setOpenMenuChild(!openMenuChild);
   };
 
   useEffect(() => {}, [currentId]);
@@ -45,9 +50,19 @@ function MoiveBox({ id, className = 'wrapper', poster, title, genres, to, intera
         {interactive && (
           <div className={cx('interactive')}>
             <div className={cx('menu-child')}>
-              <button className={cx('menu-child-btn')}>
+              <button className={cx('menu-child-btn')} onClick={handleOpenMenuChild}>
                 <FontAwesomeIcon icon={faEllipsisVertical} />
               </button>
+
+              {openMenuChild && (
+                <div className={cx('menu-small')}>
+                  <ul className={cx('menu-small-list')}>
+                    <li className={cx('menu-small-item')}>Optionnnnnnnn</li>
+                    <li className={cx('menu-small-item')}>Optionnnnnnnn</li>
+                    <li className={cx('menu-small-item')}>Optionnnnnnnn</li>
+                  </ul>
+                </div>
+              )}
             </div>
             <div className={cx('add-list')}>
               <TippyNote note="Save to your watchlist">

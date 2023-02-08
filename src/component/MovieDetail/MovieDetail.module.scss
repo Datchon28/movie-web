@@ -240,12 +240,59 @@
 
 .show-all-cast-btn {
   padding: 8px 28px;
+  margin-top: 16px;
   border-radius: 20px;
   background-color: var(--primary-color);
   color: var(--white-color);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.all-cast {
+  position: absolute;
+  width: 44%;
+  height: 70%;
+  overflow: hidden scroll;
+  background-color: var(--default-backgourd-color-sidebar);
+  border-radius: 10px;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--white-color);
+    border-radius: 5px;
+  }
+}
+
+.all-cast-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 18px;
+  border-radius: 10px;
+  padding: 6px;
+  background-color: var(--default-backgourd-color-content);
+}
+
+.info-cast--card {
+  display: flex;
+  align-items: center;
+}
+
+.avar-cast {
+  width: 70px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.full-name-cast {
+  padding-left: 24px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.name-character {
+  width: 60%;
+  text-align: center;
 }
 
 .similar-movies-title {

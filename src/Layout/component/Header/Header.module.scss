@@ -23,16 +23,42 @@
 }
 
 .notice {
-  width: 30%;
+  width: 40%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.title-notice {
+  padding-right: 8px;
+  padding-left: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  display: none;
+  transition: display 2s linear;
+  visibility: hidden;
 }
 
 .notice-icon {
   padding: 8px 10px;
   border-radius: 20px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  color: var(--white-color);
+  background-color: var(--primary-2-color);
+
+  &:hover {
+    transition: padding-left 1s linear;
+  }
+
+  &:hover .title-notice {
+    display: block;
+    visibility: visible;
+    transition: visible 2s linear;
+  }
 }
 
 .notice {

@@ -39,6 +39,8 @@
 .name-movie {
   font-size: 13px;
   padding-bottom: 12px;
+  color: var(--white-color);
+  font-weight: 600;
 }
 
 .see-more {
@@ -54,7 +56,7 @@
   width: 70%;
   height: 100%;
   border-radius: 20px;
-  background-color: #d22f27;
+  background-color: var(--primary-2-color);
   color: var(--white-color);
   font-weight: 600;
   cursor: pointer;

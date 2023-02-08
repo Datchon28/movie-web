@@ -40,6 +40,7 @@
 
 .menu-child {
   margin-left: 12px;
+  position: relative;
 }
 
 .menu-child-btn {
@@ -50,6 +51,28 @@
   padding: 4px 6px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.menu-small {
+  position: absolute;
+}
+
+.menu-small-list {
+  list-style: none;
+  background-color: var(--default-backgourd-color-content);
+  padding: 6px 0;
+  border-radius: 10px;
+}
+
+.menu-small-item {
+  font-size: 14px;
+  padding: 6px 3px;
+  margin: 4px 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
 }
 
 .add-list {

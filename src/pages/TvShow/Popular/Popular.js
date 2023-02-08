@@ -3,7 +3,7 @@ import style from './Popular.module.scss';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import MovieBox from '../../../component/MovieBox/MovieBox';
+import MovieCard from '../../../component/MovieCard/MovieCard';
 
 const cx = classNames.bind(style);
 
@@ -38,21 +38,14 @@ function Popular() {
     <div className={cx('wrapper')}>
       <div className={cx('container')}>
         {popular.map((item, index) => (
-          <div className={cx('item')} key={index}>
-            <MovieBox
-              id={item.id}
-              className={cx('popular')}
-              poster={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-              vote={item.vote_average}
-            />
-
-            <div className={cx('info-tv')}>
-              <a className={cx('link')} href="none">
-                <span className={cx('tv-name')}>{item.original_name}</span>
-              </a>
-              <span className={cx('popularity')}>{item.popularity}</span>
-            </div>
-          </div>
+          <MovieCard
+            key={index}
+            id={item.id}
+            poster={item.poster_path}
+            vote={item.vote_average}
+            title={item.original_name}
+            popularrity={item.popularity}
+          />
         ))}
       </div>
 

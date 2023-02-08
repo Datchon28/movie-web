@@ -63,7 +63,7 @@ function SignUp() {
 
       <div className={cx('table-info')}>
         <label className={cx('name-account')}>
-          <span className={cx('title-info')}>Account</span>
+          <span className={cx('title-info')}>Username</span>
           <input
             onChange={checkLength}
             value={value}

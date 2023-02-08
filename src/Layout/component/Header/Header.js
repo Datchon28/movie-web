@@ -16,6 +16,7 @@ function Header() {
         <div className={cx('user')}>
           <div className={cx('notice')}>
             <button className={cx('notice-icon')}>
+              <span className={cx('title-notice')}>Notice</span>
               <FontAwesomeIcon icon={faBell} />
             </button>
           </div>

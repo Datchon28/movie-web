@@ -52,7 +52,7 @@ input,
 }
 
 a[href] {
-  color: var(--text-color);
+  color: var(--white-color);
   text-decoration: none;
   outline: none;
 }
@@ -61,12 +61,13 @@ a[href] {
   --width-default-sidebar: 220px;
   --width-default-sidebarforcontent: 240px;
   --width-sidebar-mobile: 70px;
-  --primary-color: #d22f27;
+  --primary-color: #7671f0;
+  --primary-2-color: #595cff;
   --white-color: #fff;
   --black-color: #000;
   --text-color: #a9a9a9;
-  --default-backgourd-color-content: #191919;
-  --default-backgourd-color-sidebar: #212121;
+  --default-backgourd-color-content: #0c1216;
+  --default-backgourd-color-sidebar: #7671f0;
   --alpha-bgc: ;
   --padding-content-left-and-right: 34px;
 }

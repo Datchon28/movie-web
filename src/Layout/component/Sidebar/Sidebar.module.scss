@@ -7,12 +7,12 @@
   top: 0;
   left: 0;
   bottom: 0;
-  color: #fff;
+  color: var(--text-color);
   z-index: 1;
 }
 
 .item {
-  background-color: var(--default-backgourd-color-sidebar);
+  background-color: var(--default-backgourd-color-content);
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   height: 100%;
@@ -21,7 +21,7 @@
 .brand {
   padding-top: 24px;
   margin: 0 18px;
-  border-bottom: 1px solid #ccc;
+  text-align: center;
 }
 
 .brand-name {
@@ -31,9 +31,10 @@
 }
 
 .menu {
-  margin: 20px 10px;
+  margin: 8px 10px 20px 10px;
   border-bottom: 1px solid #ccc;
-  padding: 0px 0px 12px 0;
+  border-top: 1px solid #ccc;
+  padding: 12px 0;
 }
 
 .link-to {
@@ -41,12 +42,13 @@
   align-items: center;
   justify-content: center;
   border-left: 3px solid transparent;
+  color: var(--text-color) !important;
 }
 
 .active {
   background-color: var(--primary-color);
-  border-radius: 20px;
   color: var(--white-color) !important;
+  border-radius: 20px;
 }
 
 .list-item {
@@ -80,6 +82,7 @@
 
 .account-title {
   margin-left: 34px;
+  color: var(--white-color);
 }
 
 .account {

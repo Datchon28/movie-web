@@ -6,9 +6,8 @@
   top: 0;
   right: 0;
   bottom: 0;
-  color: #fff;
+  color: var(--white-color);
   z-index: 1;
-  border-left: 1px solid var(--default-backgourd-color-sidebar);
 }
 
 .account {
@@ -22,7 +21,7 @@
 
 .name {
   flex: 1 1;
-  color: #fff;
+  color: var(--white-color);
   font-size: 18px;
   font-weight: 600;
   display: flex;
