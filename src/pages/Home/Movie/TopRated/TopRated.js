@@ -2,14 +2,16 @@ import classNames from 'classnames/bind';
 import style from './TopRated.module.scss';
 
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
-import config from '../../../../config/index';
+import { Responsive } from '../../../../Layout/DefaultLayout/DefaultLayout';
 
 const cx = classNames.bind(style);
 
 function TopRated() {
+  const { isMobile, isTable } = useContext(Responsive);
+
   const [topRated, setTopRated] = useState([]);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ function TopRated() {
         <h2>Movies : Top Rated</h2>
         <span>See all</span>
       </div>
-      <SlickMovie quality={5}>
+      <SlickMovie quality={isTable ? 3 : isMobile ? 2 : 5}>
         {topRated.map((item, index) => (
           <div className={cx('item')} key={index}>
             <MovieBox

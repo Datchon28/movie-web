@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const cx = classNames.bind(style);
 
-function Modal({ children }) {
+function Modal({ children, customeCloseBtn = true }) {
   const [closeModal, setCloseModal] = useState(false);
 
   const handleCLoseModal = () => {
@@ -14,12 +14,14 @@ function Modal({ children }) {
 
   return (
     <div className={cx('wrapper', closeModal && 'close')}>
-      <div className={cx('modal-content')}>
+      <div className={cx('modal-content')} onClick={handleCLoseModal}>
         {children}
         <div className={cx('close-modal')}>
-          <button className={cx('close-btn')} onClick={handleCLoseModal}>
-            Close
-          </button>
+          {customeCloseBtn && (
+            <button className={cx('close-btn')} onClick={handleCLoseModal}>
+              Close
+            </button>
+          )}
         </div>
       </div>
     </div>

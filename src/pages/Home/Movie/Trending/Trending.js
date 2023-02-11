@@ -1,15 +1,17 @@
 import classNames from 'classnames/bind';
 import style from './Trending.module.scss';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
 import axios from 'axios';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
+import { Responsive } from '../../../../Layout/DefaultLayout/DefaultLayout';
 
 const cx = classNames.bind(style);
 
 function Trending() {
   const [trending, setTreding] = useState([]);
+  const { isMobile, isTable } = useContext(Responsive);
 
   useEffect(() => {
     axios
@@ -25,7 +27,7 @@ function Trending() {
         <h2>Movies : Trending</h2>
         <span>See all</span>
       </div>
-      <SlickMovie quality={3}>
+      <SlickMovie quality={isTable ? 3 : isMobile ? 2 : 5}>
         {trending.map((item, index) => (
           <div className={cx('item')} key={index}>
             <MovieBox

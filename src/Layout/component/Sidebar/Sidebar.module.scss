@@ -8,7 +8,7 @@
   left: 0;
   bottom: 0;
   color: var(--text-color);
-  z-index: 1;
+  z-index: 10;
 }
 
 .item {
@@ -35,6 +35,13 @@
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
   padding: 12px 0;
+}
+
+.menu-for-tablet-and-mobile {
+  color: var(--white-color);
+  display: block;
+  font-size: 28px;
+  padding: 6px 14px;
 }
 
 .link-to {
@@ -118,4 +125,81 @@
 
 .sign-icon {
   padding-right: 10px;
+}
+
+// Reponsive
+// Tablet
+@media (max-width: 1024px) and (min-width: 740px) {
+  .wrapper {
+    width: 90px;
+    transition: width 0.2s ease-out;
+  }
+
+  .open-side-bar {
+    width: 200px;
+    transition: width 0.2s ease-out;
+
+    .title {
+      display: block;
+    }
+
+    .menu-for-tablet-and-mobile {
+      color: var(--text-color);
+    }
+  }
+
+  .menu-for-tablet-and-mobile {
+    color: var(--white-color);
+    display: block;
+    font-size: 28px;
+    padding: 6px 14px;
+  }
+
+  .brand-name {
+    h1 {
+      display: none;
+    }
+  }
+
+  .title {
+    display: none;
+    // visibility: hidden;
+  }
+
+  .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .icon {
+    margin-left: 0;
+  }
+
+  .account-title {
+    display: none;
+  }
+
+  .sign-title {
+    display: none;
+  }
+}
+
+// Reponsive
+// Mobile
+@media (max-width: 740px) {
+  .wrapper {
+    transform: translateX(-100%);
+    transition: transform 1.5s linear;
+  }
+
+  .open-side-bar-mobile {
+    transform: translateX(0);
+    transition: transform 1.5s linear;
+  }
+
+  .menu-for-tablet-and-mobile {
+    font-size: 20px;
+  }
 }

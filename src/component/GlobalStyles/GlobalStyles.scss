@@ -59,6 +59,8 @@ a[href] {
 
 :root {
   --width-default-sidebar: 220px;
+  --width-tablet-sidebar: 80px;
+
   --width-default-sidebarforcontent: 240px;
   --width-sidebar-mobile: 70px;
   --primary-color: #7671f0;
@@ -70,4 +72,14 @@ a[href] {
   --default-backgourd-color-sidebar: #7671f0;
   --alpha-bgc: ;
   --padding-content-left-and-right: 34px;
+}
+
+// Reponsive
+// Tablet
+@media (max-width: 1024px) and (min-width: 740px) {
+}
+
+// Reponsive
+// Mobile
+@media (max-width: 740px) {
 }

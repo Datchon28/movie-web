@@ -40,3 +40,19 @@
 .popularity {
   font-size: 13px;
 }
+
+// Reponsive
+// Tablet
+@media (max-width: 1024px) and (min-width: 740px) {
+  .item {
+    width: 198px;
+  }
+}
+
+// Reponsive
+// Mobile
+@media (max-width: 740px) {
+  .item {
+    width: 170px;
+  }
+}

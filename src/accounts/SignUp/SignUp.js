@@ -1,9 +1,11 @@
+import classNames from 'classnames/bind';
+import style from './SignUp.module.scss';
+
 import { faEnvelope, faEye, faEyeSlash, faLeaf, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import style from './SignUp.module.scss';
+import config from '../../config';
 
 const cx = classNames.bind(style);
 
@@ -77,7 +79,7 @@ function SignUp() {
           <span className={cx('alert-error')}>{checkLenght === false && 'invalid (at least 4 charaters minimum)'}</span>
         </label>
 
-        <label className={cx('password-account')}>
+        <label className={cx('email-account')}>
           <span className={cx('title-info')}>Email</span>
           <input
             onChange={checkValidEmail}
@@ -136,7 +138,10 @@ function SignUp() {
         <div className={cx('create-account')}>
           <button className={cx('create-account-btn')}>Create Account</button>
           <span className={cx('link-to-signin')}>
-            If you have account, continue with <Link className={cx('link-to-signin-btn')}>Sign In</Link>
+            If you have account, continue with{' '}
+            <Link to={config.routes.signin} className={cx('link-to-signin-btn')}>
+              Sign In
+            </Link>
           </span>
         </div>
       </div>

@@ -1,15 +1,17 @@
 import classNames from 'classnames/bind';
 import style from './Popular.module.scss';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
+import { Responsive } from '../../../../Layout/DefaultLayout/DefaultLayout';
 
 const cx = classNames.bind(style);
 
 function Popular() {
   const [popular, setPopular] = useState([]);
+  const { isMobile, isTable } = useContext(Responsive);
 
   useEffect(() => {
     axios
@@ -25,7 +27,7 @@ function Popular() {
         <h2>TV : Popular</h2>
         <span>See all</span>
       </div>
-      <SlickMovie quality={3}>
+      <SlickMovie quality={isTable ? 3 : isMobile ? 2 : 5}>
         {popular.map((item, index) => (
           <div className={cx('item')} key={index}>
             <MovieBox

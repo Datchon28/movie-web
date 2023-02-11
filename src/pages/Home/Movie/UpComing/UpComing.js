@@ -1,14 +1,17 @@
 import classNames from 'classnames/bind';
 import style from './UpComing.module.scss';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
+import { Responsive } from '../../../../Layout/DefaultLayout/DefaultLayout';
 
 const cx = classNames.bind(style);
 
 function UpComing() {
+  const { isMobile, isTable } = useContext(Responsive);
+
   const [UpComing, setUpComing] = useState([]);
 
   useEffect(() => {
@@ -24,7 +27,7 @@ function UpComing() {
         <h2>Movies : Up Coming</h2>
         <span>See all</span>
       </div>
-      <SlickMovie quality={5}>
+      <SlickMovie quality={isTable ? 3 : isMobile ? 2 : 5}>
         {UpComing.map((item, index) => (
           <div className={cx('item')} key={index}>
             <MovieBox

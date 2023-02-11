@@ -1,24 +1,60 @@
 import classNames from 'classnames/bind';
 import style from './Header.module.scss';
 
-import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBell, faClose, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Search from './Search/Search';
+import { Fragment, useContext, useState } from 'react';
+import { Responsive } from '../../DefaultLayout/DefaultLayout';
+import Sidebar from '../Sidebar/Sidebar';
+import Modal from '../../../component/Modal/Modal';
 
 const cx = classNames.bind(style);
 
 function Header() {
+  const { isMobile } = useContext(Responsive);
+  const [openSideBarMobile, setOpenSideBarMobile] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
+
+  const handleOpenSideBarMobile = () => {
+    setOpenSideBarMobile(!openSideBarMobile);
+  };
+
+  const handleOpenSearch = () => {
+    setOpenSearch(!openSearch);
+  };
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container')}>
-        <Search />
+        <div className={cx('logo')}>
+          {isMobile && (
+            <span className={cx('icon-open-menu')} onClick={handleOpenSideBarMobile}>
+              <FontAwesomeIcon icon={faBars} />
+            </span>
+          )}
+          {openSideBarMobile && (
+            <Modal customeCloseBtn={false}>
+              <Sidebar openonmobile={'open-side-bar-mobile'} />
+            </Modal>
+          )}
+        </div>
 
-        <div className={cx('user')}>
-          <div className={cx('notice')}>
-            <button className={cx('notice-icon')}>
-              <span className={cx('title-notice')}>Notice</span>
-              <FontAwesomeIcon icon={faBell} />
-            </button>
+        <div className={cx('option')}>
+          <Fragment>{openSearch && <Search />}</Fragment>
+
+          <div className={cx('user')}>
+            {isMobile && (
+              <span className={cx('icon-search', openSearch && 'fixed')} onClick={handleOpenSearch}>
+                {openSearch ? <FontAwesomeIcon icon={faClose} /> : <FontAwesomeIcon icon={faSearch} />}
+              </span>
+            )}
+            <div className={cx('notice')}>
+              <button className={cx('notice-icon')}>
+                <span className={cx('title-notice')}>Notice</span>
+                <FontAwesomeIcon icon={faBell} />
+              </button>
+            </div>
           </div>
         </div>
       </div>

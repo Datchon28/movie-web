@@ -64,3 +64,49 @@
 .notice {
   width: 30%;
 }
+
+// Reponsive
+// Tablet
+@media (max-width: 1024px) and (min-width: 740px) {
+  .wrapper {
+    width: calc(100% - calc(var(--width-tablet-sidebar)));
+  }
+}
+
+// Reponsive
+// Mobile
+@media (max-width: 740px) {
+  .wrapper {
+    width: 100%;
+    height: 60px;
+  }
+
+  .container {
+    padding: 0 calc(var(--padding-content-left-and-right));
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .icon-search {
+    margin-right: 36px;
+    color: var(--white-color);
+    font-size: 22px;
+  }
+
+  .fixed {
+    margin-right: 16px;
+    color: var(--white-color);
+    font-size: 22px;
+  }
+
+  .icon-open-menu {
+    color: var(--white-color);
+    padding: 6px 10px;
+    margin-right: 26px;
+    font-size: 20px;
+  }
+}

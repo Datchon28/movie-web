@@ -48,3 +48,19 @@
 .watch-list {
   padding: 0 14px;
 }
+
+// Reponsive
+// Tablet
+@media (max-width: 1024px) and (min-width: 720px) {
+  .wrapper {
+    display: none;
+  }
+}
+
+// Reponsive
+// Mobile
+@media (max-width: 740px) {
+  .wrapper {
+    display: none;
+  }
+}

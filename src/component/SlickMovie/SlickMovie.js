@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const cx = classNames.bind(style);
 
-function SlickMovie({ quality, children, slideScroll = 1, autoplay = false }) {
+function SlickMovie({ quality = 5, children, slideScroll = 1, autoplay = false }) {
   const settings = {
     dots: false,
     infinite: true,

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faBars,
   faFilm,
   faGear,
   faHouse,
@@ -16,20 +17,39 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import config from '../../../config';
+import { useContext, useState } from 'react';
+import { Responsive } from '../../DefaultLayout/DefaultLayout';
 
 const cx = classNames.bind(style);
 
-function Sidebar() {
+function Sidebar({ openonmobile }) {
+  const { isTable, isMobile } = useContext(Responsive);
+  const [openSidebar, setOpenSibar] = useState(false);
+
+  const handleOpenSideBar = () => {
+    setOpenSibar(!openSidebar);
+  };
+
   return (
-    <div className={cx('wrapper')}>
+    <div className={cx('wrapper', openSidebar && 'open-side-bar', openonmobile)}>
       <div className={cx('item')}>
         <div className={cx('brand')}>
           <div className={cx('brand-name')}>
-            <Link to="/">
+            {isTable ? (
+              <span className={cx('menu-for-tablet-and-mobile')} onClick={handleOpenSideBar}>
+                <FontAwesomeIcon icon={faBars} />
+              </span>
+            ) : isMobile ? (
               <h1>
-                FAT CAT <br></br> Movie
+                FAT CAT <br></br>
               </h1>
-            </Link>
+            ) : (
+              <Link to="/">
+                <h1>
+                  FAT CAT <br></br> Movie
+                </h1>
+              </Link>
+            )}
           </div>
         </div>
         <ul className={cx('menu')}>

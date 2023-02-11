@@ -3,7 +3,10 @@
 }
 
 .content {
-  padding-left: 22px;
+}
+
+.link-to {
+  color: var(--white-color) !important;
 }
 
 .active {
@@ -53,4 +56,28 @@
 .filter-btn {
   padding: 8px 28px;
   border-radius: 10px;
+}
+
+// Reponsive
+// Mobile
+@media (max-width: 740px) {
+  .tab {
+    padding: 0;
+    flex-direction: column;
+    margin-bottom: 130px;
+    align-items: flex-start;
+    height: 50px;
+  }
+
+  .tab-movies {
+    flex-wrap: wrap;
+  }
+
+  .link-to {
+    width: 46%;
+    font-size: 16px;
+    text-align: center;
+    margin: 8px 0;
+    padding: 4px 0;
+  }
 }
