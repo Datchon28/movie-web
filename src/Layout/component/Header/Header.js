@@ -41,7 +41,7 @@ function Header() {
         </div>
 
         <div className={cx('option')}>
-          <Fragment>{openSearch && <Search />}</Fragment>
+          {isMobile ? <Fragment>{openSearch && <Search />}</Fragment> : <Search />}
 
           <div className={cx('user')}>
             {isMobile && (

@@ -62,7 +62,7 @@
 }
 
 .content {
-  width: 100%;
+  width: 50%;
   height: 100%;
   position: relative;
   color: var(--white-color);
@@ -118,5 +118,9 @@
   .search-result {
     top: -8px;
     left: -30px;
+  }
+
+  .content {
+    width: 100%;
   }
 }

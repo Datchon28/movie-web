@@ -5,12 +5,13 @@ import { faBookBookmark, faHeart, faPlay, faShare, faStar } from '@fortawesome/f
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SlickMovie from '../../component/SlickMovie';
 import MovieBox from '../MovieBox/MovieBox';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { selectId } from '../../store/IdStore';
 import TippyNote from '../TippyNote/TippyNote';
 import Modal from '../Modal/Modal';
+import { Responsive } from '../../Layout/DefaultLayout/DefaultLayout';
 
 const cx = classNames.bind(style);
 
@@ -20,6 +21,8 @@ function MovieDetail() {
   const [cast, setCast] = useState([]);
   const [similar, setSimilar] = useState([]);
   const [allCast, setAllCast] = useState(false);
+
+  const { isMobile } = useContext(Responsive);
 
   const id = useSelector(selectId);
 
@@ -70,6 +73,11 @@ function MovieDetail() {
             src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
           />
           <div className={cx('alpha-bgc')} />
+          {isMobile && (
+            <div className={cx('poster-on-mobile')}>
+              <img alt="anh" src={`https://image.tmdb.org/t/p/original${item.poster_path}`} />
+            </div>
+          )}
         </div>
       </div>
       <div className={cx('container')}>
@@ -153,7 +161,7 @@ function MovieDetail() {
         <h3 className={cx('cast-title')}>Cast & Crew</h3>
 
         <div className={cx('cast-list')}>
-          <SlickMovie quality={5} slideScroll={3}>
+          <SlickMovie quality={isMobile ? 2 : 5} slideScroll={3}>
             {cast
               .map((cst, index) => (
                 <div id={cst.id} key={index} className={cx('cast-item')}>
@@ -212,7 +220,7 @@ function MovieDetail() {
       <div className={cx('similar-movies')}>
         <h3 className={cx('similar-movies-title')}>Similar Movie</h3>
         <div className={cx('similar-list')}>
-          <SlickMovie quality={5} slideScroll={2}>
+          <SlickMovie quality={isMobile ? 2 : 5} slideScroll={2}>
             {similar.map((simi, index) => (
               <MovieBox
                 id={simi.id}

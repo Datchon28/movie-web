@@ -16,13 +16,6 @@ function Modal({ children, customeCloseBtn = true }) {
     <div className={cx('wrapper', closeModal && 'close')}>
       <div className={cx('modal-content')} onClick={handleCLoseModal}>
         {children}
-        <div className={cx('close-modal')}>
-          {customeCloseBtn && (
-            <button className={cx('close-btn')} onClick={handleCLoseModal}>
-              Close
-            </button>
-          )}
-        </div>
       </div>
     </div>
   );
