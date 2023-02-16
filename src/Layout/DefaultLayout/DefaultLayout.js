@@ -9,7 +9,6 @@ import { useMediaQuery } from 'react-responsive';
 import { createContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import TippyNote from '../../component/TippyNote/TippyNote';
 
 const cx = classNames.bind(style);
 
@@ -40,11 +39,9 @@ function DefaultLayout({ children }) {
         <SideBarExtra />
 
         <div className={cx('scroll-to-top')}>
-          <TippyNote note="Scroll to Top">
-            <button className={cx('scroll-to-top-btn')} onClick={ScrolltoTop}>
-              <FontAwesomeIcon icon={faArrowUp} />
-            </button>
-          </TippyNote>
+          <button className={cx('scroll-to-top-btn')} onClick={ScrolltoTop}>
+            <FontAwesomeIcon icon={faArrowUp} />
+          </button>
         </div>
       </div>
     </Responsive.Provider>

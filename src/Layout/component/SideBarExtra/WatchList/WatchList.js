@@ -13,6 +13,7 @@ const cx = classNames.bind(style);
 function WatchList() {
   const i = useRef();
   const [item, setItem] = useState([]);
+  const [watchList, setWatchList] = useState([]);
   const id = useSelector(selectId);
 
   useEffect(() => {
@@ -21,6 +22,9 @@ function WatchList() {
     }
 
     const callItem = async () => {
+      // if() {
+
+      // }
       const response = await axios
         .get(
           `https://api.themoviedb.org/3/movie/${id}?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&append_to_response=videos`,
@@ -33,11 +37,8 @@ function WatchList() {
   }, [id]);
 
   const deleteItem = (value) => {
-    const index = item.indexOf(value);
-    if (index > -1) {
-      item.splice(index, 1);
-    }
-    return item;
+    const contai = i.current.target;
+    contai.remove();
   };
 
   return (
@@ -48,7 +49,7 @@ function WatchList() {
       <div className={cx('list')}>
         {id !== 0 &&
           item.map((movie, index) => (
-            <div className={cx('container')} ref={i} key={index}>
+            <div className={cx('container')} id={movie.id} ref={i} key={index}>
               <div className={cx('poster')}>
                 <img
                   className={cx('img')}

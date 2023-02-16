@@ -16,6 +16,16 @@ function SignIn() {
   const [checkLenght, setCheckLenght] = useState(true);
   const [checkPassValid, setCheckPassValid] = useState(true);
 
+  const json = JSON.parse(localStorage.getItem('account'));
+
+  const handlesignin = () => {
+    if (value === json[0].username && password === json[0].password) {
+      alert('dang nhap thanh cong');
+    } else {
+      alert('dang nhap that bai');
+    }
+  };
+
   const handleSeepass = () => {
     setSeePass(!Seepass);
   };
@@ -93,7 +103,9 @@ function SignIn() {
               Sign Up
             </Link>
           </span>
-          <button className={cx('create-account-btn')}>Sign In</button>
+          <button className={cx('create-account-btn')} onClick={handlesignin}>
+            Sign In
+          </button>
         </div>
       </div>
     </div>

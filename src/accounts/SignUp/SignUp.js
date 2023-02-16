@@ -18,6 +18,19 @@ function SignUp() {
   const [checkLenght, setCheckLenght] = useState(true);
   const [checkPassValid, setCheckPassValid] = useState(true);
 
+  const signup_info = [
+    {
+      username: value,
+      password: password,
+      email: email,
+    },
+  ];
+  const setjson = JSON.stringify(signup_info);
+
+  const handleSubmit = () => {
+    localStorage.setItem('account', setjson);
+  };
+
   const handleSeepass = () => {
     setSeePass(!Seepass);
   };
@@ -136,7 +149,7 @@ function SignUp() {
           </span>
         </div>
         <div className={cx('create-account')}>
-          <button className={cx('create-account-btn')}>Create Account</button>
+          <input className={cx('create-account-btn')} type="submit" value="Create Account" onClick={handleSubmit} />
           <span className={cx('link-to-signin')}>
             If you have account, continue with{' '}
             <Link to={config.routes.signin} className={cx('link-to-signin-btn')}>
