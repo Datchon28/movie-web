@@ -13,7 +13,7 @@ function SideBarExtra() {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('account')}>
-        <span className={cx('name')}>{account[0].username}</span>
+        <span className={cx('name')}>{!account ? 'Username' : account.username}</span>
         <img
           className={cx('account-avar')}
           alt="anh"

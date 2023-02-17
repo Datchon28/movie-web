@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import style from './SignIn.module.scss';
 
-import { faEnvelope, faEye, faEyeSlash, faLeaf, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -16,10 +16,11 @@ function SignIn() {
   const [checkLenght, setCheckLenght] = useState(true);
   const [checkPassValid, setCheckPassValid] = useState(true);
 
+  // Info SignIn
   const json = JSON.parse(localStorage.getItem('account'));
 
   const handlesignin = () => {
-    if (value === json[0].username && password === json[0].password) {
+    if (value === json.username && password === json.password) {
       alert('dang nhap thanh cong');
     } else {
       alert('dang nhap that bai');

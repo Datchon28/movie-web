@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 import style from './SignUp.module.scss';
 
-import { faEnvelope, faEye, faEyeSlash, faLeaf, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import config from '../../config';
 
@@ -14,21 +14,37 @@ function SignUp() {
   const [value, SetValue] = useState('');
   const [email, SetEmail] = useState('');
   const [password, SetPassWord] = useState('');
+  const [passwordConfirm, SetPassWordConfirm] = useState('');
   const [checkEmailValid, setCheckEmailValid] = useState(true);
   const [checkLenght, setCheckLenght] = useState(true);
   const [checkPassValid, setCheckPassValid] = useState(true);
+  const [checkPassConfirm, setCheckPassConfirm] = useState(true);
+  const [agreeRules, setAgreeRules] = useState(false);
 
-  const signup_info = [
-    {
-      username: value,
-      password: password,
-      email: email,
-    },
-  ];
+  // InFO SignUp
+  const signup_info = {
+    username: value,
+    password: password,
+    email: email,
+  };
+
   const setjson = JSON.stringify(signup_info);
 
   const handleSubmit = () => {
-    localStorage.setItem('account', setjson);
+    if (
+      (checkEmailValid === true) &
+      (checkLenght === true) &
+      (checkPassValid === true) &
+      (agreeRules === true) &
+      (checkPassConfirm === true)
+    ) {
+      localStorage.setItem('account', setjson);
+      alert('Sign Up Success');
+      window.location = config.routes.signin;
+    } else {
+      alert('Sign Up Failed');
+      return;
+    }
   };
 
   const handleSeepass = () => {
@@ -67,6 +83,21 @@ function SignUp() {
     } else {
       setCheckPassValid(false);
     }
+  };
+
+  const checkPassWordConfirm = (e) => {
+    const valuePassConfirm = e.target.value;
+    SetPassWordConfirm(valuePassConfirm);
+
+    if (valuePassConfirm === password || valuePassConfirm.length === 0) {
+      setCheckPassConfirm(true);
+    } else {
+      setCheckPassConfirm(false);
+    }
+  };
+
+  const handleAgreeRules = () => {
+    setAgreeRules(!agreeRules);
   };
 
   return (
@@ -127,22 +158,26 @@ function SignUp() {
 
         <label className={cx('password-account')}>
           <span className={cx('title-info')}>Password Confirm</span>
-          <input className={cx('input')} type={Seepass ? 'text' : 'password'} placeholder="6 characters minimum" />
-          <span className={cx('see-pass')} onClick={handleSeepass}>
+          <input
+            className={cx('input')}
+            type={Seepass ? 'text' : 'password'}
+            value={passwordConfirm}
+            onChange={checkPassWordConfirm}
+            placeholder="6 characters minimum"
+          />
+          <span className={cx('see-pass', checkPassConfirm === false && 'see-fixed')} onClick={handleSeepass}>
             {Seepass ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
           </span>
-          <span className={cx('icon')}>
+          <span className={cx('icon', checkPassConfirm === false && 'icon-fixed')}>
             <FontAwesomeIcon icon={faLock} />
           </span>
-          {/* <span className={cx('alert-error')}>
-            {checkPassValid === false && 'Password Confirm does not match Your PassWord'}
-          </span> */}
+          <span className={cx('alert-error')}>{checkPassConfirm === false && 'Password Confirm does not match '}</span>
         </label>
       </div>
 
       <div className={cx('button')}>
         <div className={cx('check-condition')}>
-          <input className={cx('check')} type="checkbox" />
+          <input className={cx('check')} type="checkbox" onClick={handleAgreeRules} />
           <span>
             I have read and agree to the FCM <Link className={cx('link-to-terms-of-use')}>terms of use</Link> and{' '}
             <Link className={cx('link-to-privacy')}>privacy policy</Link>.
