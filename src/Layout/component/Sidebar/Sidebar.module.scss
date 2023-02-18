@@ -97,6 +97,10 @@
   padding: 0px 0px 12px 0;
 }
 
+.theme-btn-signup {
+  background-color: red;
+}
+
 .sign {
   display: flex;
   align-items: center;
@@ -125,6 +129,11 @@
 
 .sign-icon {
   padding-right: 10px;
+}
+
+.account-avar {
+  max-width: 30px;
+  width: 100%;
 }
 
 // Reponsive

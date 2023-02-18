@@ -134,15 +134,15 @@
 
 .link-to-signin {
   margin-top: 20px;
+  color: #dadada;
 }
 
 .link-to-signin-btn,
 .link-to-terms-of-use,
 .link-to-privacy {
-  color: var(--text-color) !important;
+  text-decoration: underline !important;
 
   &:hover {
-    color: #dadada !important;
     text-decoration: underline;
   }
 }

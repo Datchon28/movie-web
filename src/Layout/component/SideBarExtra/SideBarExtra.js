@@ -3,17 +3,29 @@ import style from './SideBarExtra.module.scss';
 
 import NowPlaying from '../../../pages/Home/Movie/NowPlaying/NowPlaying';
 import WatchList from './WatchList/WatchList';
+import MenuItem from '../Sidebar/MenuItem';
+import config from '../../../config';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(style);
 
 function SideBarExtra() {
-  const account = JSON.parse(localStorage.getItem('account'));
+  const account = JSON.parse(localStorage.getItem('login'));
 
   // console.log(account[0].username);
   return (
     <div className={cx('wrapper')}>
       <div className={cx('account')}>
-        <span className={cx('name')}>{!account ? 'Username' : account.username}</span>
+        {/* <span className={cx('name')}>{!account ? 'Username' : account.username}</span>
+         */}
+        {account ? (
+          <span className={cx('name-user')}>{account.username}</span>
+        ) : (
+          <Link className={cx('link-to-signin')} to={config.routes.signin}>
+            <span>Login</span>
+          </Link>
+        )}
+
         <img
           className={cx('account-avar')}
           alt="anh"

@@ -17,7 +17,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import config from '../../../config';
-import { useContext, useState } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { Responsive } from '../../DefaultLayout/DefaultLayout';
 
 const cx = classNames.bind(style);
@@ -25,6 +25,13 @@ const cx = classNames.bind(style);
 function Sidebar({ openonmobile }) {
   const { isTable, isMobile } = useContext(Responsive);
   const [openSidebar, setOpenSibar] = useState(false);
+
+  const account = JSON.parse(localStorage.getItem('login'));
+
+  const handleLogout = () => {
+    localStorage.removeItem('login');
+    window.location.reload();
+  };
 
   const handleOpenSideBar = () => {
     setOpenSibar(!openSidebar);
@@ -62,17 +69,39 @@ function Sidebar({ openonmobile }) {
           <div className={cx('account-title')}>
             <h2>Account</h2>
           </div>
-          <MenuItem to={config.routes.signup} title="New Account " icon={<FontAwesomeIcon icon={faUserPlus} />} />
-          {/* <MenuItem to="/signin" title="Sign In" icon={<FontAwesomeIcon icon={faUser} />} /> */}
+
+          {isMobile ? (
+            account ? (
+              <MenuItem
+                to={config.routes.signin}
+                title={account.username}
+                icon={
+                  <img
+                    className={cx('account-avar')}
+                    alt="anh"
+                    src="https://png.pngtree.com/png-clipart/20191121/original/pngtree-user-icon-png-image_5097430.jpg"
+                  />
+                }
+              />
+            ) : (
+              <MenuItem to={config.routes.signin} title="Login" icon={<FontAwesomeIcon icon={faUser} />} />
+            )
+          ) : (
+            <MenuItem to={config.routes.signin} title="Login" icon={<FontAwesomeIcon icon={faUser} />} />
+          )}
           <MenuItem to="/setting" title="Setting" icon={<FontAwesomeIcon icon={faGear} />} />
         </ul>
         <div className={cx('sign')}>
-          <button className={cx('sign-btn')}>
-            <span className={cx('sign-icon')}>
-              <FontAwesomeIcon icon={faSignOut} />
-            </span>
+          <button className={cx('sign-btn')} onClick={handleLogout}>
+            {account && (
+              <Fragment>
+                <span className={cx('sign-icon')}>
+                  <FontAwesomeIcon icon={faSignOut} />
+                </span>
 
-            <span className={cx('sign-title')}>Login</span>
+                <span className={cx('sign-title')}>Logout</span>
+              </Fragment>
+            )}
           </button>
         </div>
       </div>

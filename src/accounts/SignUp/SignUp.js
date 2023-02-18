@@ -179,7 +179,7 @@ function SignUp() {
       <div className={cx('button')}>
         <div className={cx('check-condition')}>
           <input className={cx('check')} type="checkbox" onClick={handleAgreeRules} />
-          <span>
+          <span className={cx('text-condition')}>
             I have read and agree to the FCM <Link className={cx('link-to-terms-of-use')}>terms of use</Link> and{' '}
             <Link className={cx('link-to-privacy')}>privacy policy</Link>.
           </span>

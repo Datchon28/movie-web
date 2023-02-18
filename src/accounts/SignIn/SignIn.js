@@ -4,7 +4,7 @@ import style from './SignIn.module.scss';
 import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
 import config from '../../config';
 
 const cx = classNames.bind(style);
@@ -17,11 +17,18 @@ function SignIn() {
   const [checkPassValid, setCheckPassValid] = useState(true);
 
   // Info SignIn
-  const a = JSON.parse(localStorage.getItem('account'));
+  const account = JSON.parse(localStorage.getItem('account'));
+
+  const login = {
+    username: value,
+    password: password,
+  };
 
   const handlesignin = () => {
-    if (value === a.username && password === a.password) {
+    if (value === account.username && password === account.password) {
+      localStorage.setItem('login', JSON.stringify(login));
       alert('dang nhap thanh cong');
+      window.location = config.routes.home;
     } else {
       alert('dang nhap that bai');
     }
@@ -105,7 +112,7 @@ function SignIn() {
             </Link>
           </span>
           <button className={cx('create-account-btn')} onClick={handlesignin}>
-            Sign In
+            Login
           </button>
         </div>
       </div>
