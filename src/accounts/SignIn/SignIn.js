@@ -17,10 +17,10 @@ function SignIn() {
   const [checkPassValid, setCheckPassValid] = useState(true);
 
   // Info SignIn
-  const json = JSON.parse(localStorage.getItem('account'));
+  const a = JSON.parse(localStorage.getItem('account'));
 
   const handlesignin = () => {
-    if (value === json.username && password === json.password) {
+    if (value === a.username && password === a.password) {
       alert('dang nhap thanh cong');
     } else {
       alert('dang nhap that bai');

@@ -15,8 +15,11 @@ const cx = classNames.bind(style);
 export const Responsive = createContext();
 
 function DefaultLayout({ children }) {
+  // Responsive
   const isTable = useMediaQuery({ query: '(min-width: 740px) and (max-width: 1024px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 740px)' });
+
+  // InfoAccount;
 
   const ScrolltoTop = () => {
     window.scrollTo({

@@ -26,9 +26,10 @@ function SignUp() {
     username: value,
     password: password,
     email: email,
+    sign_in: false,
   };
 
-  const setjson = JSON.stringify(signup_info);
+  const setjson = window.JSON.stringify(signup_info);
 
   const handleSubmit = () => {
     if (

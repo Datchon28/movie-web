@@ -5,15 +5,15 @@ import { useState } from 'react';
 
 const cx = classNames.bind(style);
 
-function Modal({ children, customeCloseBtn = true }) {
+function Modal({ children, customeCloseBtn = true, toogleclose }) {
   const [closeModal, setCloseModal] = useState(false);
 
   const handleCLoseModal = () => {
-    setCloseModal(!closeModal);
+    setCloseModal(true);
   };
 
   return (
-    <div className={cx('wrapper', closeModal && 'close')}>
+    <div id="modal" className={cx('wrapper', closeModal && 'close')}>
       <div className={cx('modal-content')} onClick={handleCLoseModal}>
         {children}
       </div>

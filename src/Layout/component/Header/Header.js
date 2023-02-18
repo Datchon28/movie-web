@@ -34,7 +34,7 @@ function Header() {
             </span>
           )}
           {openSideBarMobile && (
-            <Modal customeCloseBtn={false}>
+            <Modal>
               <Sidebar openonmobile={'open-side-bar-mobile'} />
             </Modal>
           )}

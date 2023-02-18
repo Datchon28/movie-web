@@ -12,9 +12,11 @@ function Footer() {
       <ul className={cx('list')}>
         <li className={cx('item', 'logo-brand')}>
           <h1 className={cx('brand')}>FC</h1>
-          <button className={cx('join')} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <Link to={config.routes.signup}>Join With Us</Link>
-          </button>
+          <Link to={config.routes.signup}>
+            <button className={cx('join')} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              Join With Us
+            </button>
+          </Link>
         </li>
         <li className={cx('item', 'info-brand')}>
           <h3>About Us</h3>

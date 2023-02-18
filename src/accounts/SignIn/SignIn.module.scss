@@ -54,6 +54,7 @@
 .title-info {
   margin-top: 20px;
   font-size: 15px;
+  font-weight: 500;
   margin-left: 4px;
   margin-bottom: 5px;
 }
@@ -203,5 +204,9 @@
 
   .create-account-btn {
     margin-top: 12px;
+  }
+
+  .title-info {
+    font-size: 14px;
   }
 }
