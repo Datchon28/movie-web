@@ -42,7 +42,7 @@ function MovieDetail() {
         });
 
       await axios
-        .get(`http://api.themoviedb.org/3/movie/${id}/casts?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267`)
+        .get(`https://api.themoviedb.org/3/movie/${id}/casts?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267`)
         .then((res) => {
           setCast(res.data.cast);
         });
