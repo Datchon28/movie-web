@@ -43,7 +43,6 @@ function TopRated() {
             id={item.id}
             poster={item.poster_path}
             vote={item.vote_average}
-            title={item.original_title}
             popularrity={item.popularity}
           />
         ))}

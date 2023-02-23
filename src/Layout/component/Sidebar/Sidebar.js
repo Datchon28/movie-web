@@ -4,17 +4,7 @@ import style from './Sidebar.module.scss';
 import { Link } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBars,
-  faFilm,
-  faGear,
-  faHouse,
-  faSignIn,
-  faSignOut,
-  faTv,
-  faUser,
-  faUserPlus,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBars, faFilm, faGear, faHouse, faSignOut, faTv, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import config from '../../../config';
 import { Fragment, useContext, useState } from 'react';
@@ -30,7 +20,7 @@ function Sidebar({ openonmobile }) {
 
   const handleLogout = () => {
     localStorage.removeItem('login');
-    window.location.reload();
+    window.location = config.routes.home;
   };
 
   const handleOpenSideBar = () => {
@@ -70,22 +60,18 @@ function Sidebar({ openonmobile }) {
             <h2>Account</h2>
           </div>
 
-          {isMobile ? (
-            account ? (
-              <MenuItem
-                to={config.routes.signin}
-                title={account.username}
-                icon={
-                  <img
-                    className={cx('account-avar')}
-                    alt="anh"
-                    src="https://png.pngtree.com/png-clipart/20191121/original/pngtree-user-icon-png-image_5097430.jpg"
-                  />
-                }
-              />
-            ) : (
-              <MenuItem to={config.routes.signin} title="Login" icon={<FontAwesomeIcon icon={faUser} />} />
-            )
+          {account ? (
+            <MenuItem
+              to={config.routes.your_account}
+              title={account.username}
+              icon={
+                <img
+                  className={cx('account-avar')}
+                  alt="anh"
+                  src="https://png.pngtree.com/png-clipart/20191121/original/pngtree-user-icon-png-image_5097430.jpg"
+                />
+              }
+            />
           ) : (
             <MenuItem to={config.routes.signin} title="Login" icon={<FontAwesomeIcon icon={faUser} />} />
           )}

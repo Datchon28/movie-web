@@ -7,8 +7,6 @@ import SlickMovie from '../../component/SlickMovie';
 import MovieBox from '../MovieBox/MovieBox';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { selectId } from '../../store/IdStore';
 import TippyNote from '../TippyNote/TippyNote';
 import Modal from '../Modal/Modal';
 import { Responsive } from '../../Layout/DefaultLayout/DefaultLayout';
@@ -24,7 +22,7 @@ function MovieDetail() {
 
   const { isMobile } = useContext(Responsive);
 
-  const id = useSelector(selectId);
+  const id = JSON.parse(localStorage.getItem('id_detail'));
 
   useEffect(() => {
     if (id === 0) {

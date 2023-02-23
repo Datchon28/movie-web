@@ -3,7 +3,7 @@ import style from './SignUp.module.scss';
 
 import { faEnvelope, faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import config from '../../config';
 
@@ -11,9 +11,11 @@ const cx = classNames.bind(style);
 
 function SignUp() {
   const [Seepass, setSeePass] = useState(false);
-  const [value, SetValue] = useState('');
+  const [value, setValue] = useState('');
+  const [firstName, setFirtName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, SetEmail] = useState('');
-  const [password, SetPassWord] = useState('');
+  const [password, setPassWord] = useState('');
   const [passwordConfirm, SetPassWordConfirm] = useState('');
   const [checkEmailValid, setCheckEmailValid] = useState(true);
   const [checkLenght, setCheckLenght] = useState(true);
@@ -23,7 +25,10 @@ function SignUp() {
 
   // InFO SignUp
   const signup_info = {
+    id: 1,
     username: value,
+    first_name: firstName,
+    last_name: lastName,
     password: password,
     email: email,
     sign_in: false,
@@ -55,12 +60,22 @@ function SignUp() {
   // Rules
   const checkLength = (e) => {
     const value = e.target.value;
-    SetValue(value);
+    setValue(value);
     if (value.length >= 4 || value.length === 0) {
       setCheckLenght(true);
     } else {
       setCheckLenght(false);
     }
+  };
+
+  const ValueFirstName = (e) => {
+    const value = e.target.value;
+    setFirtName(value);
+  };
+
+  const ValuelasttName = (e) => {
+    const value = e.target.value;
+    setLastName(value);
   };
 
   const checkValidEmail = (e) => {
@@ -76,7 +91,7 @@ function SignUp() {
 
   const checkPassWord = (e) => {
     const valuePass = e.target.value;
-    SetPassWord(valuePass);
+    setPassWord(valuePass);
     const validPass = /^[A-Za-z]\w{7,14}$/;
 
     if (valuePass.match(validPass) || valuePass.length === 0) {
@@ -123,6 +138,36 @@ function SignUp() {
           </span>
           <span className={cx('alert-error')}>{checkLenght === false && 'invalid (at least 4 charaters minimum)'}</span>
         </label>
+
+        <div className={cx('full-name')}>
+          <label className={cx('first-name-account')}>
+            <span className={cx('title-info')}>First Name</span>
+            <input
+              onChange={ValueFirstName}
+              value={firstName}
+              className={cx('input')}
+              type="text"
+              placeholder=" 4 charaters minimum"
+            />
+            <span className={cx('icon', checkLenght === false && 'icon-fixed')}>
+              <FontAwesomeIcon icon={faUser} />
+            </span>
+          </label>
+
+          <label className={cx('last-name-account')}>
+            <span className={cx('title-info')}>Last Name</span>
+            <input
+              onChange={ValuelasttName}
+              value={lastName}
+              className={cx('input')}
+              type="text"
+              placeholder=" 4 charaters minimum"
+            />
+            <span className={cx('icon', checkLenght === false && 'icon-fixed')}>
+              <FontAwesomeIcon icon={faUser} />
+            </span>
+          </label>
+        </div>
 
         <label className={cx('email-account')}>
           <span className={cx('title-info')}>Email</span>

@@ -52,6 +52,37 @@
   height: 100%;
 }
 
+.full-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.first-name-account {
+  padding-right: 5px;
+
+  .icon {
+    top: 50%;
+  }
+}
+
+.last-name-account {
+  padding-left: 5px;
+
+  .icon {
+    left: 5%;
+    top: 50%;
+  }
+}
+
+.first-name-account,
+.last-name-account {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .title-info {
   margin-top: 20px;
   font-size: 15px;

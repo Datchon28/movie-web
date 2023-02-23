@@ -16,6 +16,7 @@ import TvPopular from './pages/TvShow/Popular/Popular';
 import TvToprated from './pages/TvShow/TopRated/TopRated';
 import SignUp from './accounts/SignUp/SignUp';
 import SignIn from './accounts/SignIn/SignIn';
+import Account from './accounts/Account/Account';
 
 function App() {
   return (
@@ -100,6 +101,9 @@ function App() {
               }
             />
             {/* Tv Show */}
+
+            {/* Account */}
+            <Route path={config.routes.your_account} element={<Account />} />
           </Routes>
         </DefaultLayout>
       </BrowserRouter>

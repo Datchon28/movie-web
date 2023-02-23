@@ -17,6 +17,7 @@ const routes = {
   // Accounts
   signup: '/signup',
   signin: '/signin',
+  your_account: '/account-setting',
 };
 
 export default routes;

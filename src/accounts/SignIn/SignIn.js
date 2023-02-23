@@ -20,6 +20,7 @@ function SignIn() {
   const account = JSON.parse(localStorage.getItem('account'));
 
   const login = {
+    ...account,
     username: value,
     password: password,
   };
@@ -27,10 +28,10 @@ function SignIn() {
   const handlesignin = () => {
     if (value === account.username && password === account.password) {
       localStorage.setItem('login', JSON.stringify(login));
-      alert('dang nhap thanh cong');
+      alert('Logged in successfully');
       window.location = config.routes.home;
     } else {
-      alert('dang nhap that bai');
+      alert('Login failed');
     }
   };
 
