@@ -6,6 +6,8 @@ import axios from 'axios';
 import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
 import { Responsive } from '../../../../Layout/DefaultLayout/DefaultLayout';
+import { Link } from 'react-router-dom';
+import config from '../../../../config';
 
 const cx = classNames.bind(style);
 
@@ -25,7 +27,9 @@ function Popular() {
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
         <h2>TV : Popular</h2>
-        <span>See all</span>
+        <Link to={config.routes.popular_tv}>
+          <span>See all</span>
+        </Link>
       </div>
       <SlickMovie quality={isTable ? 3 : isMobile ? 2 : 5}>
         {popular.map((item, index) => (

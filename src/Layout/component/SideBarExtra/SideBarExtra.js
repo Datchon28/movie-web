@@ -19,7 +19,9 @@ function SideBarExtra() {
         {/* <span className={cx('name')}>{!account ? 'Username' : account.username}</span>
          */}
         {account ? (
-          <span className={cx('name-user')}>{account.username}</span>
+          <span className={cx('name-user')}>
+            {account.first_name} {account.last_name}
+          </span>
         ) : (
           <Link className={cx('link-to-signin')} to={config.routes.signin}>
             <span>Login</span>

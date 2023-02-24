@@ -117,7 +117,7 @@ function Account() {
           <div className={cx('edit-gender')}>
             <label>Gender</label>
             <select id="gender" className={cx('list-gender')} value={gender} onChange={EditGender}>
-              <option>Choose your gender</option>
+              <option>-- Gender --</option>
               <option>Male</option>
               <option>FeMale</option>
             </select>

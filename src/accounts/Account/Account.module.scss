@@ -24,7 +24,8 @@
 }
 
 label {
-  font-weight: 600;
+  font-weight: 500;
+  color: #e9e7e7;
 }
 
 .edit-name,
@@ -72,7 +73,19 @@ label {
   border-radius: 5px;
   font-size: 16px;
   padding: 5px 10px;
-  background-color: #ddd;
+  color: var(--white-color);
+  background-color: #333;
+  border: 1px solid #1e1e1e;
+  font-weight: 600;
+
+  &:focus {
+    border-color: var(--primary-color);
+    border: 1px solid #888;
+  }
+}
+
+.list-gender {
+  font-size: 14px;
 }
 
 .change-password-confirm {

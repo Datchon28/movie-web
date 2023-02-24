@@ -111,8 +111,10 @@
   margin-left: 5px;
   color: var(--black-color);
 }
-
-.icon-fixed {
+.icon-fixed-username,
+.icon-fixed-email,
+.icon-fixed-password,
+.icon-fixed-pass-confirm {
   top: 50%;
 }
 
@@ -240,5 +242,14 @@
 
   .create-account-btn {
     margin-top: 12px;
+  }
+
+  .icon-fixed-username,
+  .icon-fixed-pass-confi {
+    top: 41%;
+  }
+
+  .icon-fixed-password {
+    top: 58%;
   }
 }

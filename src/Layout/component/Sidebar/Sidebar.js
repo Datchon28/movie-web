@@ -37,9 +37,22 @@ function Sidebar({ openonmobile }) {
                 <FontAwesomeIcon icon={faBars} />
               </span>
             ) : isMobile ? (
-              <h1>
-                FAT CAT <br></br>
-              </h1>
+              account ? (
+                <div>
+                  <img
+                    className={cx('account-avar')}
+                    alt="anh"
+                    src="https://png.pngtree.com/png-clipart/20191121/original/pngtree-user-icon-png-image_5097430.jpg"
+                  />
+                  <h3 className={cx('name-user')}>
+                    {account.first_name} {account.last_name}
+                  </h3>
+                </div>
+              ) : (
+                <h1>
+                  FAT CAT <br></br> Movie
+                </h1>
+              )
             ) : (
               <Link to="/">
                 <h1>
@@ -61,17 +74,7 @@ function Sidebar({ openonmobile }) {
           </div>
 
           {account ? (
-            <MenuItem
-              to={config.routes.your_account}
-              title={account.username}
-              icon={
-                <img
-                  className={cx('account-avar')}
-                  alt="anh"
-                  src="https://png.pngtree.com/png-clipart/20191121/original/pngtree-user-icon-png-image_5097430.jpg"
-                />
-              }
-            />
+            <MenuItem to={config.routes.your_account} title="Account" icon={<FontAwesomeIcon icon={faUser} />} />
           ) : (
             <MenuItem to={config.routes.signin} title="Login" icon={<FontAwesomeIcon icon={faUser} />} />
           )}

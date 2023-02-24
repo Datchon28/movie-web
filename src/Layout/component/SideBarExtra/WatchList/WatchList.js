@@ -36,11 +36,6 @@ function WatchList() {
     callItem();
   }, [id]);
 
-  const deleteItem = (value) => {
-    const contai = i.current.target;
-    contai.remove();
-  };
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
@@ -65,7 +60,7 @@ function WatchList() {
                 <div className={cx('vote')}>
                   <span className={cx('vote-user')}>{movie.vote_average}</span>
 
-                  <button className={cx('delete-item')} onClick={deleteItem}>
+                  <button className={cx('delete-item')}>
                     <FontAwesomeIcon icon={faClose} />
                   </button>
                 </div>

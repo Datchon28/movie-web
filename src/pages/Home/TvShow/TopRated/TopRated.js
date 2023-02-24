@@ -6,6 +6,8 @@ import { useEffect, useState, useContext } from 'react';
 import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
 import { Responsive } from '../../../../Layout/DefaultLayout/DefaultLayout';
+import { Link } from 'react-router-dom';
+import config from '../../../../config';
 
 const cx = classNames.bind(style);
 
@@ -26,7 +28,9 @@ function TopRated() {
     <div className={cx('toprated-wrapper')}>
       <div className={cx('title')}>
         <h2>TV : Top Rated</h2>
-        <span>See all</span>
+        <Link to={config.routes.toprated_tv}>
+          <span>See all</span>
+        </Link>
       </div>
       <SlickMovie quality={isTable ? 3 : isMobile ? 2 : 5}>
         {topRated.map((item, index) => (

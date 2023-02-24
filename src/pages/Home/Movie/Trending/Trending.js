@@ -6,6 +6,8 @@ import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
 import axios from 'axios';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
 import { Responsive } from '../../../../Layout/DefaultLayout/DefaultLayout';
+import { Link } from 'react-router-dom';
+import config from '../../../../config';
 
 const cx = classNames.bind(style);
 
@@ -25,7 +27,9 @@ function Trending() {
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
         <h2>Movies : Trending</h2>
-        <span>See all</span>
+        <Link to={config.routes.home}>
+          <span>See all</span>
+        </Link>
       </div>
       <SlickMovie quality={isTable ? 3 : isMobile ? 2 : 5}>
         {trending.map((item, index) => (

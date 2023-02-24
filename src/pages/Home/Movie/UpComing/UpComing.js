@@ -6,6 +6,8 @@ import axios from 'axios';
 import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
 import { Responsive } from '../../../../Layout/DefaultLayout/DefaultLayout';
+import config from '../../../../config';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(style);
 
@@ -25,7 +27,9 @@ function UpComing() {
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
         <h2>Movies : Up Coming</h2>
-        <span>See all</span>
+        <Link to={config.routes.upcoming_movie}>
+          <span>See all</span>
+        </Link>
       </div>
       <SlickMovie quality={isTable ? 3 : isMobile ? 2 : 5}>
         {UpComing.map((item, index) => (

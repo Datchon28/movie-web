@@ -92,9 +92,25 @@
   color: var(--white-color);
 }
 
+.link-to-signin {
+  margin-top: 20px;
+}
+
 .account {
   margin: 14px 10px 10px 10px;
   padding: 0px 0px 12px 0;
+}
+
+.account-avar {
+  border-radius: 100rem;
+  max-width: 60px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.name-user {
+  font-size: 18px;
+  color: var(--white-color);
 }
 
 .theme-btn-signup {
@@ -129,11 +145,6 @@
 
 .sign-icon {
   padding-right: 10px;
-}
-
-.account-avar {
-  max-width: 30px;
-  width: 100%;
 }
 
 // Reponsive

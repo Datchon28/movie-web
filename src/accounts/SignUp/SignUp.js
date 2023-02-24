@@ -133,7 +133,7 @@ function SignUp() {
             type="text"
             placeholder=" 4 charaters minimum"
           />
-          <span className={cx('icon', checkLenght === false && 'icon-fixed')}>
+          <span className={cx('icon', checkLenght === false && 'icon-fixed-username')}>
             <FontAwesomeIcon icon={faUser} />
           </span>
           <span className={cx('alert-error')}>{checkLenght === false && 'invalid (at least 4 charaters minimum)'}</span>
@@ -178,7 +178,7 @@ function SignUp() {
             type="email"
             placeholder=" abc@gmail.com"
           />
-          <span className={cx('icon', checkEmailValid === false && 'icon-fixed')}>
+          <span className={cx('icon', checkEmailValid === false && 'icon-fixed-email')}>
             <FontAwesomeIcon icon={faEnvelope} />
           </span>
           <span className={cx('alert-error')}>{checkEmailValid === false && 'invalid Email'}</span>
@@ -196,7 +196,7 @@ function SignUp() {
           <span className={cx('see-pass', checkPassValid === false && 'see-fixed')} onClick={handleSeepass}>
             {Seepass ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
           </span>
-          <span className={cx('icon', checkPassValid === false && 'icon-fixed')}>
+          <span className={cx('icon', checkPassValid === false && 'icon-fixed-password')}>
             <FontAwesomeIcon icon={faLock} />
           </span>
           <span className={cx('alert-error')}>{checkPassValid === false && 'invalid Password'}</span>
@@ -214,7 +214,7 @@ function SignUp() {
           <span className={cx('see-pass', checkPassConfirm === false && 'see-fixed')} onClick={handleSeepass}>
             {Seepass ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
           </span>
-          <span className={cx('icon', checkPassConfirm === false && 'icon-fixed')}>
+          <span className={cx('icon', checkPassConfirm === false && 'icon-fixed-pass-confirm')}>
             <FontAwesomeIcon icon={faLock} />
           </span>
           <span className={cx('alert-error')}>{checkPassConfirm === false && 'Password Confirm does not match '}</span>
