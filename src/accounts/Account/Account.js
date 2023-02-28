@@ -34,6 +34,7 @@ function Account() {
 
   const handleSaveChange = () => {
     localStorage.setItem('account', JSON.stringify(updateProfile));
+    alert('Changes Success');
     window.location.reload();
   };
 
@@ -162,7 +163,7 @@ function Account() {
       <div className={cx('save-change')}>
         <button className={cx('cancel-btn')}>Cancel</button>
         <button className={cx('save-btn')} onClick={handleSaveChange}>
-          Save Change
+          Save Changes
         </button>
       </div>
     </div>

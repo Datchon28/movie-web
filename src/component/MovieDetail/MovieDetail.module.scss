@@ -31,11 +31,11 @@
 }
 
 .container {
+  top: 0;
   padding: 0 20px;
-  transform: translateY(-30%);
+  transform: translateY(8%);
   display: flex;
   position: absolute;
-  bottom: 49%;
   width: 100%;
 }
 
@@ -293,6 +293,22 @@
 .name-character {
   width: 60%;
   text-align: center;
+}
+
+.official-trailer {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 78px;
+
+  .trailer-title {
+    padding: 0 14px;
+    margin-bottom: 20px;
+  }
+
+  .video {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .similar-movies-title {

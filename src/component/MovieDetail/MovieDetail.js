@@ -17,6 +17,7 @@ function MovieDetail() {
   const [item, setItem] = useState([]);
   const [companie, setCompanies] = useState([]);
   const [cast, setCast] = useState([]);
+  const [trailer, setTrailer] = useState([]);
   const [similar, setSimilar] = useState([]);
   const [allCast, setAllCast] = useState(false);
 
@@ -47,6 +48,16 @@ function MovieDetail() {
 
       await axios
         .get(
+          `https://api.themoviedb.org/3/movie/${id}/videos?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&language=en-US
+          `,
+        )
+        .then((res) => {
+          const data = res.data.results;
+          setTrailer(data.filter((element) => element.name === 'Official Trailer'));
+        });
+
+      await axios
+        .get(
           `https://api.themoviedb.org/3/movie/${id}/similar?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&language=en-US&page=1`,
         )
         .then((res) => {
@@ -60,6 +71,8 @@ function MovieDetail() {
   const showAllCast = () => {
     setAllCast(true);
   };
+
+  console.log(trailer);
 
   return (
     <div className={cx('wrapper')}>
@@ -214,6 +227,23 @@ function MovieDetail() {
           )}
         </div>
       </div>
+
+      {trailer.length !== 0 && (
+        <div className={cx('official-trailer')}>
+          <h3 className={cx('trailer-title')}>Trailer</h3>
+          {trailer.map((item, index) => (
+            <iframe
+              key={item.key}
+              className={cx('video')}
+              src={`https://www.youtube.com/embed/${item.key}`}
+              title="YouTube video player"
+              frameBorder={0}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          ))}
+        </div>
+      )}
 
       <div className={cx('similar-movies')}>
         <h3 className={cx('similar-movies-title')}>Similar Movie</h3>
