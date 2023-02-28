@@ -3,6 +3,8 @@ import config from './config';
 import DefaultLayout from './Layout/DefaultLayout/DefaultLayout';
 import Home from './pages/Home/Home';
 import Movies from './pages/Movies/Movies';
+import LoadingEffect from './component/effect/Loading/LoadingEffect';
+
 // Movie
 import NowPlaying from './pages/Movies/NowPlaying/NowPlaying';
 import Popular from './pages/Movies/Popular/Popular';
@@ -17,21 +19,29 @@ import TvToprated from './pages/TvShow/TopRated/TopRated';
 import SignUp from './accounts/SignUp/SignUp';
 import SignIn from './accounts/SignIn/SignIn';
 import Account from './accounts/Account/Account';
+import { useState } from 'react';
 
 function App() {
+  const [loading, setLoading] = useState(false);
+
+  const loadingEffect = () => {
+    setLoading(true);
+  };
+
   return (
     <div className="App">
       <BrowserRouter basename="/">
         <DefaultLayout>
           <Routes>
-            <Route path={config.routes.home} element={<Home />} />
+            <Route exact path={config.routes.home} element={<Home />} />
             <Route exact path={config.routes.movies} element={<Movies />}></Route>
-            <Route path={config.routes.movieItem} element={<MovieDetail />} />
-            <Route path={config.routes.signup} element={<SignUp />} />
-            <Route path={config.routes.signin} element={<SignIn />} />
+            <Route exact path={config.routes.movieItem} element={<MovieDetail />} />
+            <Route exact path={config.routes.signup} element={<SignUp />} />
+            <Route exact path={config.routes.signin} element={<SignIn />} />
 
             {/* Movie Tab */}
             <Route
+              exact
               path={config.routes.popular_movie}
               element={
                 <Movies>
@@ -40,6 +50,7 @@ function App() {
               }
             />
             <Route
+              exact
               path={config.routes.nowplaying_movie}
               element={
                 <Movies>
@@ -48,6 +59,7 @@ function App() {
               }
             />
             <Route
+              exact
               path={config.routes.upcoming_movie}
               element={
                 <Movies>
@@ -56,6 +68,7 @@ function App() {
               }
             />
             <Route
+              exact
               path={config.routes.toprated_movie}
               element={
                 <Movies>
@@ -65,10 +78,11 @@ function App() {
             />
             {/* Movie Tab */}
 
-            <Route path={config.routes.tv} element={<TvShow />} />
+            <Route exact path={config.routes.tv} element={<TvShow />} />
 
             {/* Tv Show */}
             <Route
+              exact
               path={config.routes.popular_tv}
               element={
                 <TvShow>
@@ -77,6 +91,7 @@ function App() {
               }
             />
             <Route
+              exact
               path={config.routes.nowplaying_tv}
               element={
                 <TvShow>
@@ -85,6 +100,7 @@ function App() {
               }
             />
             <Route
+              exact
               path={config.routes.upcoming_tv}
               element={
                 <TvShow>
@@ -93,6 +109,7 @@ function App() {
               }
             />
             <Route
+              exact
               path={config.routes.toprated_tv}
               element={
                 <TvShow>
@@ -103,7 +120,7 @@ function App() {
             {/* Tv Show */}
 
             {/* Account */}
-            <Route path={config.routes.your_account} element={<Account />} />
+            <Route exact path={config.routes.your_account} element={<Account />} />
           </Routes>
         </DefaultLayout>
       </BrowserRouter>

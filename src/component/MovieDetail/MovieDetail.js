@@ -10,6 +10,7 @@ import axios from 'axios';
 import TippyNote from '../TippyNote/TippyNote';
 import Modal from '../Modal/Modal';
 import { Responsive } from '../../Layout/DefaultLayout/DefaultLayout';
+import LoadingEffect from '../effect/Loading/LoadingEffect';
 
 const cx = classNames.bind(style);
 
@@ -21,6 +22,8 @@ function MovieDetail() {
   const [similar, setSimilar] = useState([]);
   const [allCast, setAllCast] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   const { isMobile } = useContext(Responsive);
 
   const id = JSON.parse(localStorage.getItem('id_detail'));
@@ -31,6 +34,7 @@ function MovieDetail() {
     }
 
     const fetch = async () => {
+      setLoading(true);
       await axios
         .get(
           `https://api.themoviedb.org/3/movie/${id}?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&append_to_response=videos`,
@@ -63,6 +67,8 @@ function MovieDetail() {
         .then((res) => {
           setSimilar(res.data.results);
         });
+
+      setLoading(false);
     };
 
     fetch();
@@ -72,10 +78,9 @@ function MovieDetail() {
     setAllCast(true);
   };
 
-  console.log(trailer);
-
   return (
     <div className={cx('wrapper')}>
+      {loading && <LoadingEffect />}
       <div className={cx('backdrop')}>
         <div className={cx('img')}>
           <img

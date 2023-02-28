@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import style from './DefaultLayout.module.scss';
+import './DefaultLayout.css';
 
 import Sidebar from '../component/Sidebar/Sidebar';
 import Header from '../component/Header/Header';
@@ -34,7 +35,10 @@ function DefaultLayout({ children }) {
         <Sidebar />
         <div className={cx('container')}>
           <Header />
-          <div className={cx('content')}>{children}</div>
+          <div className={cx('content')}>
+            {/* <div class="reload" /> */}
+            {children}
+          </div>
           <div className={cx('footer')}>
             <Footer />
           </div>

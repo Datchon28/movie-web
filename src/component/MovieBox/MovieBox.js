@@ -48,9 +48,9 @@ function MoiveBox({ id, className = 'wrapper', poster, title, genres, to, intera
               {openMenuChild && (
                 <div className={cx('menu-small')}>
                   <ul className={cx('menu-small-list')}>
-                    <li className={cx('menu-small-item')}>Optionnnnnnnn</li>
-                    <li className={cx('menu-small-item')}>Optionnnnnnnn</li>
-                    <li className={cx('menu-small-item')}>Optionnnnnnnn</li>
+                    <li className={cx('menu-small-item')}>Add to Favorite</li>
+                    <li className={cx('menu-small-item')}>Share</li>
+                    <li className={cx('menu-small-item')}>optional</li>
                   </ul>
                 </div>
               )}

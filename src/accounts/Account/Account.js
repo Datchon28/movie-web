@@ -10,16 +10,22 @@ function Account() {
   const account = JSON.parse(localStorage.getItem('account'));
 
   //State
-  const [avatar, setAvatar] = useState();
+  // State handle
+  const [editProfile, setEditProfile] = useState(true);
+  const [changePassword, setChangePassword] = useState(false);
 
+  // Infomation Account
+  const [avatar, setAvatar] = useState();
   const [firstName, setFirtName] = useState(account.first_name);
   const [lastName, setLastName] = useState(account.last_name);
   const [dateOfBirth, setDateOfBirth] = useState(account.date_of_birth);
   const [gender, setGender] = useState(account.gender);
+  const [address, setAddress] = useState(account.address);
+  const [city, setCity] = useState(account.city);
   const [email, setEmail] = useState(account.email);
   const [contact, setContact] = useState(account.contact);
-  const [password, setPassWord] = useState(account.password);
-  const [passwordConfirm, SetPassWordConfirm] = useState(account.password);
+  const [password, setPassWord] = useState('');
+  const [passwordConfirm, SetPassWordConfirm] = useState('');
 
   const updateProfile = {
     ...account,
@@ -28,15 +34,19 @@ function Account() {
     contact: contact,
     date_of_birth: dateOfBirth,
     gender: gender,
+    address: address,
+    city: city,
     email: email,
-    password: password,
   };
 
   const handleSaveChange = () => {
     localStorage.setItem('account', JSON.stringify(updateProfile));
+    localStorage.setItem('login', JSON.stringify(updateProfile));
     alert('Changes Success');
     window.location.reload();
   };
+
+  // HANDLE EDIT INFOMATION ACCOUNT
 
   const EditAvatar = (e) => {
     const value = e.target.file;
@@ -63,6 +73,16 @@ function Account() {
     setGender(value);
   };
 
+  const EditCity = (e) => {
+    const value = e.target.value;
+    setCity(value);
+  };
+
+  const EditAddress = (e) => {
+    const value = e.target.value;
+    setAddress(value);
+  };
+
   const EditEmail = (e) => {
     const value = e.target.value;
     setEmail(value);
@@ -74,6 +94,18 @@ function Account() {
   const EditPassword = (e) => {
     const value = e.target.value;
     setPassWord(value);
+  };
+
+  // /////////////////////////
+
+  const openEditProfile = () => {
+    setEditProfile(true);
+    setChangePassword(false);
+  };
+
+  const openChangePassword = () => {
+    setEditProfile(false);
+    setChangePassword(true);
   };
 
   return (
@@ -99,65 +131,88 @@ function Account() {
       </div>
 
       <div className={cx('edit-profile')}>
-        <div className={cx('edit-name')}>
-          <div className={cx('first-name')}>
-            <label>First Name</label>
-            <input className={cx('input')} type="text" value={firstName} onChange={EditFirstName} />
-          </div>
-          <div className={cx('last-name')}>
-            <label>Last Name</label>
-            <input className={cx('input')} type="text" value={lastName} onChange={EditLastName} />
-          </div>
+        <div className={cx('nav-edit')}>
+          <ul className={cx('nav-list')}>
+            <li className={cx('nav-item-edit-profile', editProfile && 'active')} onClick={openEditProfile}>
+              Edit Your Profile
+            </li>
+            <li className={cx('nav-item-change-pass-word', changePassword && 'active')} onClick={openChangePassword}>
+              Change Your Password
+            </li>
+          </ul>
         </div>
 
-        <div className={cx('edit-age-and-gender')}>
-          <div className={cx('date-of-birth')}>
-            <label>Date of Birth</label>
-            <input className={cx('input')} type="date" value={dateOfBirth} onChange={EditDayOfBirth} />
-          </div>
-          <div className={cx('edit-gender')}>
-            <label>Gender</label>
-            <select id="gender" className={cx('list-gender')} value={gender} onChange={EditGender}>
-              <option>-- Gender --</option>
-              <option>Male</option>
-              <option>FeMale</option>
-            </select>
-          </div>
-        </div>
+        {editProfile && (
+          <div>
+            <div className={cx('edit-name')}>
+              <div className={cx('first-name')}>
+                <label>First Name</label>
+                <input className={cx('input')} type="text" value={firstName} onChange={EditFirstName} />
+              </div>
+              <div className={cx('last-name')}>
+                <label>Last Name</label>
+                <input className={cx('input')} type="text" value={lastName} onChange={EditLastName} />
+              </div>
+            </div>
 
-        <div className={cx('edit-info')}>
-          <div className={cx('edit-address')}>
-            <label>Address</label>
-            <input className={cx('input')} type="text" />
-          </div>
+            <div className={cx('edit-age-and-gender')}>
+              <div className={cx('date-of-birth')}>
+                <label>Date of Birth</label>
+                <input className={cx('input')} type="date" value={dateOfBirth} onChange={EditDayOfBirth} />
+              </div>
+              <div className={cx('edit-gender')}>
+                <label>Gender</label>
+                <select id="gender" className={cx('list-gender')} value={gender} onChange={EditGender}>
+                  <option>-- Gender --</option>
+                  <option>Male</option>
+                  <option>FeMale</option>
+                </select>
+              </div>
+            </div>
 
-          <div className={cx('edit-city')}>
-            <label>City</label>
-            <input className={cx('input')} type="text" />
-          </div>
-        </div>
-        <div className={cx('edit-contact')}>
-          <div className={cx('edit-email')}>
-            <label>Email</label>
-            <input className={cx('input')} type="email" value={email} onChange={EditEmail} />
-          </div>
+            <div className={cx('edit-info')}>
+              <div className={cx('edit-address')}>
+                <label>Address</label>
+                <input className={cx('input')} type="text" value={address} onChange={EditAddress} />
+              </div>
 
-          <div className={cx('edit-phone-number')}>
-            <label>Contact</label>
-            <input className={cx('input')} type="number" value={contact} onChange={EditContact} />
-          </div>
-        </div>
-        <div className={cx('edit-password')}>
-          <div className={cx('change-password')}>
-            <label>Password</label>
-            <input className={cx('input')} type="password" value={password} onChange={EditPassword} />
-          </div>
+              <div className={cx('edit-city')}>
+                <label>City</label>
+                <input className={cx('input')} type="text" value={city} onChange={EditCity} />
+              </div>
+            </div>
+            <div className={cx('edit-contact')}>
+              <div className={cx('edit-email')}>
+                <label>Email</label>
+                <input className={cx('input')} type="email" value={email} onChange={EditEmail} />
+              </div>
 
-          <div className={cx('change-password-confirm')}>
-            <label>Password Confirm</label>
-            <input className={cx('input')} type="password" />
+              <div className={cx('edit-phone-number')}>
+                <label>Contact</label>
+                <input className={cx('input')} type="number" value={contact} onChange={EditContact} />
+              </div>
+            </div>
           </div>
-        </div>
+        )}
+
+        {changePassword && (
+          <div className={cx('edit-password')}>
+            <div className={cx('change-password')}>
+              <label>Password</label>
+              <input className={cx('input')} type="password" value={password} onChange={EditPassword} />
+            </div>
+
+            <div className={cx('new-password')}>
+              <label>New Password</label>
+              <input className={cx('input')} type="password" value={password} onChange={EditPassword} />
+            </div>
+
+            <div className={cx('change-password-confirm')}>
+              <label>Password Confirm</label>
+              <input className={cx('input')} type="password" />
+            </div>
+          </div>
+        )}
       </div>
 
       <div className={cx('save-change')}>
