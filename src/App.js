@@ -20,13 +20,10 @@ import SignUp from './accounts/SignUp/SignUp';
 import SignIn from './accounts/SignIn/SignIn';
 import Account from './accounts/Account/Account';
 import { useState } from 'react';
+import Favourite from './pages/Favourite/Favourite';
 
 function App() {
-  const [loading, setLoading] = useState(false);
-
-  const loadingEffect = () => {
-    setLoading(true);
-  };
+  const isLogin = JSON.parse(localStorage.getItem('login'));
 
   return (
     <div className="App">
@@ -38,6 +35,11 @@ function App() {
             <Route exact path={config.routes.movieItem} element={<MovieDetail />} />
             <Route exact path={config.routes.signup} element={<SignUp />} />
             <Route exact path={config.routes.signin} element={<SignIn />} />
+            <Route
+              exact
+              path={config.routes.favourite}
+              element={isLogin ? <Favourite /> : 'You need Login to save Favourite'}
+            />
 
             {/* Movie Tab */}
             <Route

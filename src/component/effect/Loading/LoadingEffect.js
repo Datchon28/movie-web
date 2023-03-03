@@ -2,7 +2,7 @@ import './Loading.css';
 
 function LoadingEffect() {
   return (
-    <div class="loading-wrapper">
+    <div className="loading-wrapper">
       <div class="box-of-star1">
         <div class="star star-position1"></div>
         <div class="star star-position2"></div>

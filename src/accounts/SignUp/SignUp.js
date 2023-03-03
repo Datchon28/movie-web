@@ -32,6 +32,7 @@ function SignUp() {
     password: password,
     email: email,
     sign_in: false,
+    favourite_movie: [],
   };
 
   const setjson = window.JSON.stringify(signup_info);

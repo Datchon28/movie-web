@@ -6,9 +6,9 @@
 .item {
   margin: 12px 8px;
   width: 225px;
-  background-color: #333;
   border-radius: 15px;
   padding: 8px 0;
+  box-shadow: rgba(246, 246, 246, 0.35) 0px 3px 8px;
 
   &:hover {
     background-color: #444;

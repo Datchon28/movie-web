@@ -40,7 +40,6 @@ function TopRated() {
             <MovieBox
               id={item.id}
               poster={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-              title={item.original_title}
               slideScroll={5}
               vote={item.vote_average}
             />

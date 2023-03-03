@@ -36,6 +36,11 @@ function WatchList() {
     callItem();
   }, [id]);
 
+  const handleDelete = (id) => {
+    const remove = item.filter((item) => item.id !== id);
+    setItem(remove);
+  };
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('title')}>
@@ -60,7 +65,7 @@ function WatchList() {
                 <div className={cx('vote')}>
                   <span className={cx('vote-user')}>{movie.vote_average}</span>
 
-                  <button className={cx('delete-item')}>
+                  <button className={cx('delete-item')} onClick={() => handleDelete(movie.id)}>
                     <FontAwesomeIcon icon={faClose} />
                   </button>
                 </div>
