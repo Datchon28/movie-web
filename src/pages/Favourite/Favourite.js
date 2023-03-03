@@ -35,26 +35,28 @@ function Favourite() {
 
       <div className={cx('container')}>
         <ul className={cx('list-fav')}>
-          {currentFavourite.map((fav, index) => (
-            <li className={cx('item-fav')} key={index}>
-              <MovieBox
-                id={fav.id}
-                interactive={false}
-                className={cx('favourite-item')}
-                poster={`https://image.tmdb.org/t/p/original${fav.poster_path}`}
-              />
+          {!currentFavourite
+            ? 'ADD SOME YOUR FAVOURITE MOVIE LIST'
+            : currentFavourite.map((fav, index) => (
+                <li className={cx('item-fav')} key={index}>
+                  <MovieBox
+                    id={fav.id}
+                    interactive={false}
+                    className={cx('favourite-item')}
+                    poster={`https://image.tmdb.org/t/p/original${fav.poster_path}`}
+                  />
 
-              <div className={cx('info-movie')}>
-                <h3 className={cx('title-movie')}>{fav.original_title}</h3>
-                <span className={cx('tag-line')}>{fav.tagline}</span>
-                <span className={cx('overview')}>{fav.overview}</span>
-              </div>
+                  <div className={cx('info-movie')}>
+                    <h3 className={cx('title-movie')}>{fav.original_title}</h3>
+                    <span className={cx('tag-line')}>{fav.tagline}</span>
+                    <span className={cx('overview')}>{fav.overview}</span>
+                  </div>
 
-              <button className={cx('delete-btn')} onClick={() => handleDelete(fav.id)}>
-                {isMobile ? <FontAwesomeIcon icon={faClose} /> : 'Delete'}
-              </button>
-            </li>
-          ))}
+                  <button className={cx('delete-btn')} onClick={() => handleDelete(fav.id)}>
+                    {isMobile ? <FontAwesomeIcon icon={faClose} /> : 'Delete'}
+                  </button>
+                </li>
+              ))}
         </ul>
       </div>
     </div>
