@@ -7,7 +7,6 @@ import Search from './Search/Search';
 import { Fragment, useContext, useState } from 'react';
 import { Responsive } from '../../DefaultLayout/DefaultLayout';
 import Sidebar from '../Sidebar/Sidebar';
-import Modal from '../../../component/Modal/Modal';
 
 const cx = classNames.bind(style);
 
@@ -33,11 +32,16 @@ function Header() {
               <FontAwesomeIcon icon={faBars} />
             </span>
           )}
-          {openSideBarMobile && (
+          {/* {openSideBarMobile && (
             <Modal>
               <Sidebar openonmobile={'open-side-bar-mobile'} />
             </Modal>
-          )}
+          )} */}
+          <div className={cx(openSideBarMobile ? 'showmodal' : 'closemodal')}>
+            <div className={cx('content')} onClick={() => setOpenSideBarMobile(false)}>
+              <Sidebar openonmobile={openSideBarMobile && 'open-side-bar-mobile'} />
+            </div>
+          </div>
         </div>
 
         <div className={cx('option')}>

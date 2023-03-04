@@ -211,12 +211,16 @@
 @media (max-width: 740px) {
   .wrapper {
     transform: translateX(-100%);
-    transition: transform 1.5s linear;
+    transition: transform 0.25 s ease-in;
   }
 
   .open-side-bar-mobile {
     transform: translateX(0);
-    transition: transform 1.5s linear;
+  }
+
+  .close-side-bar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease-in;
   }
 
   .menu-for-tablet-and-mobile {
