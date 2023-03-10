@@ -44,6 +44,7 @@ function TopRated() {
             poster={item.poster_path}
             vote={item.vote_average}
             popularrity={item.popularity}
+            title={item.original_title}
           />
         ))}
       </div>
