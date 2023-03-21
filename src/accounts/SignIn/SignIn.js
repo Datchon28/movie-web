@@ -3,9 +3,10 @@ import style from './SignIn.module.scss';
 
 import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
-import { json, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import config from '../../config';
+import axios from 'axios';
 
 const cx = classNames.bind(style);
 
@@ -16,22 +17,25 @@ function SignIn() {
   const [checkLenght, setCheckLenght] = useState(true);
   const [checkPassValid, setCheckPassValid] = useState(true);
 
-  // Info SignIn
-  const account = JSON.parse(localStorage.getItem('account'));
+  const [user, setUser] = useState([]);
 
-  const login = {
-    ...account,
-    username: value,
-    password: password,
-  };
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/login').then((acc) => {
+      setUser(acc.data);
+    });
+  }, []);
 
   const handlesignin = () => {
-    if (value === account.username && password === account.password) {
-      localStorage.setItem('login', JSON.stringify(login));
-      alert('Logged in successfully');
-      window.location = config.routes.home;
+    const auth = user.filter((i, index) => i.userName === value && i.userPassword === password);
+
+    if (auth.length > 0) {
+      localStorage.setItem('current_account', JSON.stringify(auth[0]));
+      alert('Login success');
+      navigate('/');
     } else {
-      alert('Login failed');
+      alert('Account or Password does not match');
     }
   };
 

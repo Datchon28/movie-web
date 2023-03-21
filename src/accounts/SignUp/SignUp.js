@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import config from '../../config';
+import axios from 'axios';
 
 const cx = classNames.bind(style);
 
@@ -24,33 +25,52 @@ function SignUp() {
   const [agreeRules, setAgreeRules] = useState(false);
 
   // InFO SignUp
-  const signup_info = {
-    id: 1,
-    username: value,
-    first_name: firstName,
-    last_name: lastName,
-    password: password,
-    email: email,
-    sign_in: false,
-    favourite_movie: [],
-  };
+  // const signup_info = {
+  //   id: 1,
+  //   username: value,
+  //   first_name: firstName,
+  //   last_name: lastName,
+  //   password: password,
+  //   email: email,
+  //   sign_in: false,
+  //   favourite_movie: [],
+  // };
 
-  const setjson = window.JSON.stringify(signup_info);
+  // const setjson = window.JSON.stringify(signup_info);
 
-  const handleSubmit = () => {
-    if (
-      (checkEmailValid === true) &
-      (checkLenght === true) &
-      (checkPassValid === true) &
-      (agreeRules === true) &
-      (checkPassConfirm === true)
-    ) {
-      localStorage.setItem('account', setjson);
-      alert('Sign Up Success');
-      window.location = config.routes.signin;
-    } else {
-      alert('Sign Up Failed');
-      return;
+  // const handleSubmit = () => {
+  //   if (
+  //     (checkEmailValid === true) &
+  //     (checkLenght === true) &
+  //     (checkPassValid === true) &
+  //     (agreeRules === true) &
+  //     (checkPassConfirm === true)
+  //   ) {
+  //     localStorage.setItem('account', setjson);
+  //     alert('Sign Up Success');
+  //     window.location = config.routes.signin;
+  //   } else {
+  //     alert('Sign Up Failed');
+  //     return;
+  //   }
+  // };
+
+  const handleSubmit = async () => {
+    try {
+      await axios
+        .post('http://localhost:5000/signup', {
+          userName: value,
+          userEmail: email,
+          userPassword: password,
+          first_Name: firstName,
+          last_Name: lastName,
+          favourite_Movie: [],
+        })
+        .then(function (response) {
+          console.log(response);
+        });
+    } catch (error) {
+      console.log(error);
     }
   };
 

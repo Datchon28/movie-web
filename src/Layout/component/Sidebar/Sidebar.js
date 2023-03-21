@@ -16,10 +16,10 @@ function Sidebar({ openonmobile }) {
   const { isTable, isMobile } = useContext(Responsive);
   const [openSidebar, setOpenSibar] = useState(false);
 
-  const account = JSON.parse(localStorage.getItem('login'));
+  const account = JSON.parse(localStorage.getItem('current_account'));
 
   const handleLogout = () => {
-    localStorage.removeItem('login');
+    localStorage.removeItem('current_account');
     window.location = config.routes.home;
   };
 
@@ -45,7 +45,7 @@ function Sidebar({ openonmobile }) {
                     src="https://png.pngtree.com/png-clipart/20191121/original/pngtree-user-icon-png-image_5097430.jpg"
                   />
                   <h3 className={cx('name-user')}>
-                    {account.first_name} {account.last_name}
+                    {account.first_Name} {account.last_Name}
                   </h3>
                 </div>
               ) : (

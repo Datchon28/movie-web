@@ -10,7 +10,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(style);
 
 function Favourite() {
-  const account = JSON.parse(localStorage.getItem('account'));
+  const account = JSON.parse(localStorage.getItem('current_account'));
   const favourite = account.favourite_movie;
   const [currentFavourite, setCurrentFavourite] = useState(favourite);
 

@@ -2,12 +2,13 @@ import classNames from 'classnames/bind';
 import style from './Account.module.scss';
 
 import { useState } from 'react';
+import axios from 'axios';
 
 const cx = classNames.bind(style);
 
 function Account() {
   // Current Profile
-  const account = JSON.parse(localStorage.getItem('account'));
+  const account = JSON.parse(localStorage.getItem('current_account'));
 
   //State
   // State handle
@@ -16,13 +17,13 @@ function Account() {
 
   // Infomation Account
   const [avatar, setAvatar] = useState();
-  const [firstName, setFirtName] = useState(account.first_name);
-  const [lastName, setLastName] = useState(account.last_name);
+  const [firstName, setFirtName] = useState(account.first_Name);
+  const [lastName, setLastName] = useState(account.last_Name);
   const [dateOfBirth, setDateOfBirth] = useState(account.date_of_birth);
   const [gender, setGender] = useState(account.gender);
-  const [address, setAddress] = useState(account.address);
+  const [address, setAddress] = useState(account.userAddress);
   const [city, setCity] = useState(account.city);
-  const [email, setEmail] = useState(account.email);
+  const [email, setEmail] = useState(account.userEmail);
   const [contact, setContact] = useState(account.contact);
   const [password, setPassWord] = useState('');
   const [passwordConfirm, SetPassWordConfirm] = useState('');
@@ -39,11 +40,21 @@ function Account() {
     email: email,
   };
 
-  const handleSaveChange = () => {
-    localStorage.setItem('account', JSON.stringify(updateProfile));
-    localStorage.setItem('login', JSON.stringify(updateProfile));
-    alert('Changes Success');
-    window.location.reload();
+  const handleSaveChange = async () => {
+    try {
+      const update = await axios
+        .post('http://localhost:5000/update-account', { userName: account.userName }, { userAddress: address })
+        .then((data) => {
+          console.log(data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+
+    // localStorage.setItem('account', JSON.stringify(updateProfile));
+    // localStorage.setItem('login', JSON.stringify(updateProfile));
+    // alert('Changes Success');
+    // window.location.reload();
   };
 
   // HANDLE EDIT INFOMATION ACCOUNT
