@@ -14,16 +14,25 @@
  - Classnames, Sass
  - Axios library
  - Responsive Web For Multiple Devices (Laptop, Tablet, Mobie)
+ 
+ - NodeJs
+ - ExpressJS Framework
+ - MongoDB , mongoose
+ 
   And Some other libraries..
   
   # Functions :
   - Sign up
   - Login
+  - Account Management
   - Added Movie To Watchlist
   - Save Movie to Your Favourite
   - Search Movie
-  - See Movie Detail
-  - Movies Are Constantly Updated
+  - View detailed information of each movie
+  - Movies are constantly updated/Latest
+  - Sort movies by genre
+  - Search movies
+  
  
 
 
