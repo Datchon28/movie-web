@@ -11,20 +11,37 @@ const cx = classNames.bind(style);
 
 function Favourite() {
   const account = JSON.parse(localStorage.getItem('current_account'));
-  const favourite = account.favourite_movie;
+  const favourite = account.favourite_Movie;
   const [currentFavourite, setCurrentFavourite] = useState(favourite);
 
   const { isMobile } = useContext(Responsive);
 
   const handleDelete = async (id) => {
-    const remove = await currentFavourite.filter((item) => item.id !== id);
+    try {
+      await axios
+        .post('http://localhost:5000/favourite/delete', {
+          userName: account.userName,
+          favourite_Movie: id,
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+
+    const remove = currentFavourite.filter((item) => {
+      return item.id !== id;
+    });
+    console.log(remove);
     setCurrentFavourite(remove);
+
     const update = {
       ...account,
-      favourite_movie: remove,
+      favourite_Movie: remove,
     };
 
-    return localStorage.setItem('account', JSON.stringify(update));
+    return localStorage.setItem('current_account', JSON.stringify(update));
   };
 
   return (

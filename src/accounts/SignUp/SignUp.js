@@ -66,7 +66,7 @@ function SignUp() {
           last_Name: lastName,
           favourite_Movie: [],
         })
-        .then(function (response) {
+        .then((response) => {
           console.log(response);
         });
     } catch (error) {

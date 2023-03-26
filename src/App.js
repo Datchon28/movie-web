@@ -23,7 +23,7 @@ import { useState } from 'react';
 import Favourite from './pages/Favourite/Favourite';
 
 function App() {
-  const isLogin = JSON.parse(localStorage.getItem('login'));
+  const isLogin = JSON.parse(localStorage.getItem('current_account'));
 
   return (
     <div className="App">

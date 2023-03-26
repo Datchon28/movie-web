@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import style from './Account.module.scss';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const cx = classNames.bind(style);
@@ -19,42 +19,50 @@ function Account() {
   const [avatar, setAvatar] = useState();
   const [firstName, setFirtName] = useState(account.first_Name);
   const [lastName, setLastName] = useState(account.last_Name);
-  const [dateOfBirth, setDateOfBirth] = useState(account.date_of_birth);
-  const [gender, setGender] = useState(account.gender);
+  const [dateOfBirth, setDateOfBirth] = useState(account.userBirhDay);
+  const [gender, setGender] = useState(account.Gender);
   const [address, setAddress] = useState(account.userAddress);
   const [city, setCity] = useState(account.city);
   const [email, setEmail] = useState(account.userEmail);
-  const [contact, setContact] = useState(account.contact);
+  const [contact, setContact] = useState(account.userContact);
   const [password, setPassWord] = useState('');
   const [passwordConfirm, SetPassWordConfirm] = useState('');
 
-  const updateProfile = {
-    ...account,
-    first_name: firstName,
-    last_name: lastName,
-    contact: contact,
-    date_of_birth: dateOfBirth,
-    gender: gender,
-    address: address,
-    city: city,
-    email: email,
-  };
-
   const handleSaveChange = async () => {
+    let updateProfile = {
+      ...account,
+      first_Name: firstName,
+      last_Name: lastName,
+      userContact: contact,
+      userBirhDay: dateOfBirth,
+      Gender: gender,
+      userAddress: address,
+      userCity: city,
+      userEmail: email,
+    };
     try {
       const update = await axios
-        .post('http://localhost:5000/update-account', { userName: account.userName }, { userAddress: address })
+        .post('http://localhost:5000/update-account', {
+          userName: account.userName,
+          first_Name: updateProfile.first_Name,
+          last_Name: updateProfile.last_Name,
+          userContact: updateProfile.userContact,
+          userBirhDay: updateProfile.userBirhDay,
+          Gender: updateProfile.Gender,
+          userAddress: updateProfile.userAddress,
+          userCity: updateProfile.userCity,
+          userEmail: updateProfile.userEmail,
+        })
         .then((data) => {
-          console.log(data);
+          console.log(data.data);
         });
     } catch (error) {
       console.log(error);
     }
 
-    // localStorage.setItem('account', JSON.stringify(updateProfile));
-    // localStorage.setItem('login', JSON.stringify(updateProfile));
-    // alert('Changes Success');
-    // window.location.reload();
+    localStorage.setItem('current_account', JSON.stringify(updateProfile));
+    alert('Changes Success');
+    window.location.reload();
   };
 
   // HANDLE EDIT INFOMATION ACCOUNT

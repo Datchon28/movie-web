@@ -22,14 +22,18 @@ function SignIn() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/login').then((acc) => {
-      setUser(acc.data);
-    });
+    axios
+      .get('http://localhost:5000/login', {
+        userName: value,
+        userPassword: password,
+      })
+      .then((acc) => {
+        setUser(acc.data);
+      });
   }, []);
 
-  const handlesignin = () => {
+  const handlesignin = async () => {
     const auth = user.filter((i, index) => i.userName === value && i.userPassword === password);
-
     if (auth.length > 0) {
       localStorage.setItem('current_account', JSON.stringify(auth[0]));
       alert('Login success');
