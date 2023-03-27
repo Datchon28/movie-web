@@ -30,14 +30,15 @@ function SignIn() {
       .then((acc) => {
         setUser(acc.data);
       });
-  }, []);
+  }, [navigate]);
 
-  const handlesignin = async () => {
+  const handlesignin = () => {
     const auth = user.filter((i, index) => i.userName === value && i.userPassword === password);
     if (auth.length > 0) {
       localStorage.setItem('current_account', JSON.stringify(auth[0]));
       alert('Login success');
       navigate('/');
+      window.location.reload();
     } else {
       alert('Account or Password does not match');
     }
@@ -77,7 +78,7 @@ function SignIn() {
         <h2>FATCAT Movie</h2>
       </div>
 
-      <div className={cx('table-info')}>
+      <div className={cx('table-info')} onKeyUp={(e) => e.keyCode === 13 && handlesignin()}>
         <label className={cx('name-account')}>
           <span className={cx('title-info')}>Username</span>
           <input

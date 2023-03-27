@@ -1,6 +1,6 @@
 import axios from 'axios';
 import classNames from 'classnames/bind';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import style from './Favourite.module.scss';
 import MovieBox from '../../component/MovieBox';
 import { Responsive } from '../../Layout/DefaultLayout/DefaultLayout';

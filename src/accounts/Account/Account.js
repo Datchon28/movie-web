@@ -25,8 +25,25 @@ function Account() {
   const [city, setCity] = useState(account.city);
   const [email, setEmail] = useState(account.userEmail);
   const [contact, setContact] = useState(account.userContact);
+
   const [password, setPassWord] = useState('');
+  const [newPassword, setNewPassWord] = useState('');
   const [passwordConfirm, SetPassWordConfirm] = useState('');
+
+  const handleChangePassword = async () => {
+    const validPass = /^[A-Za-z]\w{7,14}$/;
+    if (changePassword) {
+      if (password === account.userPassword) {
+        if (newPassword.match(validPass) && newPassword === passwordConfirm) {
+          handleSaveChange();
+        } else {
+          alert('Password, New Password or Confirmation Password is Incorrect');
+        }
+      } else {
+        alert('Password, New Password or Confirmation Password is Incorrect');
+      }
+    }
+  };
 
   const handleSaveChange = async () => {
     let updateProfile = {
@@ -39,6 +56,7 @@ function Account() {
       userAddress: address,
       userCity: city,
       userEmail: email,
+      userPassword: changePassword ? newPassword : account.userPassword,
     };
     try {
       const update = await axios
@@ -52,6 +70,7 @@ function Account() {
           userAddress: updateProfile.userAddress,
           userCity: updateProfile.userCity,
           userEmail: updateProfile.userEmail,
+          userPassword: updateProfile.userPassword,
         })
         .then((data) => {
           console.log(data.data);
@@ -110,9 +129,20 @@ function Account() {
     const value = e.target.value;
     setContact(value);
   };
+
   const EditPassword = (e) => {
     const value = e.target.value;
     setPassWord(value);
+  };
+
+  const EditNewPassword = (e) => {
+    const value = e.target.value;
+    setNewPassWord(value);
+  };
+
+  const EditPasswordConfirm = (e) => {
+    const value = e.target.value;
+    SetPassWordConfirm(value);
   };
 
   // /////////////////////////
@@ -223,12 +253,12 @@ function Account() {
 
             <div className={cx('new-password')}>
               <label>New Password</label>
-              <input className={cx('input')} type="password" value={password} onChange={EditPassword} />
+              <input className={cx('input')} type="password" value={newPassword} onChange={EditNewPassword} />
             </div>
 
             <div className={cx('change-password-confirm')}>
               <label>Password Confirm</label>
-              <input className={cx('input')} type="password" />
+              <input className={cx('input')} type="password" value={passwordConfirm} onChange={EditPasswordConfirm} />
             </div>
           </div>
         )}
@@ -236,7 +266,7 @@ function Account() {
 
       <div className={cx('save-change')}>
         <button className={cx('cancel-btn')}>Cancel</button>
-        <button className={cx('save-btn')} onClick={handleSaveChange}>
+        <button className={cx('save-btn')} onClick={changePassword ? handleChangePassword : handleSaveChange}>
           Save Changes
         </button>
       </div>
