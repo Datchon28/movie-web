@@ -21,7 +21,7 @@ function Favourite() {
       await axios
         .post('http://localhost:5000/favourite/delete', {
           userName: account.userName,
-          favourite_Movie: id,
+          id: id,
         })
         .then((data) => {
           console.log(data);
