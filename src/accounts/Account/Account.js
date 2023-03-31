@@ -22,7 +22,7 @@ function Account() {
   const [dateOfBirth, setDateOfBirth] = useState(account.userBirhDay);
   const [gender, setGender] = useState(account.Gender);
   const [address, setAddress] = useState(account.userAddress);
-  const [city, setCity] = useState(account.city);
+  const [city, setCity] = useState(account.userCity);
   const [email, setEmail] = useState(account.userEmail);
   const [contact, setContact] = useState(account.userContact);
 
@@ -238,7 +238,7 @@ function Account() {
 
               <div className={cx('edit-phone-number')}>
                 <label>Contact</label>
-                <input className={cx('input')} type="number" value={contact} onChange={EditContact} />
+                <input className={cx('input')} value={contact} onChange={EditContact} />
               </div>
             </div>
           </div>
