@@ -60,7 +60,7 @@ function Account() {
     };
     try {
       const update = await axios
-        .put('http://localhost:5000/update-account', {
+        .put('https://movie-api-xzce.onrender.com', {
           userName: account.userName,
           first_Name: updateProfile.first_Name,
           last_Name: updateProfile.last_Name,

@@ -46,7 +46,7 @@ function MoiveBox({ id, className = 'wrapper', poster, title, genres, interactiv
           let dataFirts = res.data;
 
           axios
-            .put('http://localhost:5000/favourite/add', {
+            .put('https://movie-api-xzce.onrender.com/favourite/add', {
               userName: account.userName,
               favourite_Movie: dataFirts,
             })

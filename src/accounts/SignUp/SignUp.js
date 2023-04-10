@@ -58,7 +58,7 @@ function SignUp() {
   const handleSubmit = async () => {
     try {
       await axios
-        .post('http://localhost:5000/signup', {
+        .post('https://movie-api-xzce.onrender.com/signup', {
           userName: value,
           userEmail: email,
           userPassword: password,
