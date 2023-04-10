@@ -2,12 +2,15 @@ import classNames from 'classnames/bind';
 import style from './TopRated.module.scss';
 
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import MovieCard from '../../../component/MovieCard/MovieCard';
+import { GenRes } from '../Movies';
 
 const cx = classNames.bind(style);
 
 function TopRated() {
+  const isGenre = useContext(GenRes);
+
   const [topRated, setTopRated] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +35,12 @@ function TopRated() {
     };
 
     Items();
-  }, [page]);
+
+    if (isGenre !== undefined) {
+      const filter = topRated.filter((p) => p.genre_ids[0] == isGenre);
+      setTopRated(filter);
+    }
+  }, [page, isGenre]);
 
   return (
     <div className={cx('wrapper')}>
@@ -43,6 +51,7 @@ function TopRated() {
             id={item.id}
             poster={item.poster_path}
             vote={item.vote_average}
+            genres_id={item.genre_ids[0]}
             popularrity={item.popularity}
             title={item.original_title}
           />

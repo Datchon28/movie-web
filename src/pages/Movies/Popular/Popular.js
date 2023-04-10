@@ -1,13 +1,16 @@
 import classNames from 'classnames/bind';
 import style from './Popular.module.scss';
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import MovieCard from '../../../component/MovieCard/MovieCard';
+import { GenRes } from '../Movies';
 
 const cx = classNames.bind(style);
 
 function Popular() {
+  const isGenre = useContext(GenRes);
+
   const [popular, setPopular] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,9 +33,13 @@ function Popular() {
         setIsLoading(false);
       }
     };
-
     Items();
-  }, [page]);
+
+    if (isGenre !== undefined) {
+      const filter = popular.filter((p) => p.genre_ids[0] == isGenre);
+      setPopular(filter);
+    }
+  }, [page, isGenre]);
 
   return (
     <div className={cx('wrapper')}>
@@ -44,6 +51,7 @@ function Popular() {
             poster={item.poster_path}
             vote={item.vote_average}
             title={item.original_title}
+            genres_id={item.genre_ids[0]}
             popularrity={item.popularity}
           />
         ))}

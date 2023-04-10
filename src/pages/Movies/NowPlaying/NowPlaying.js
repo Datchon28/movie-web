@@ -1,13 +1,16 @@
 import classNames from 'classnames/bind';
 import style from './NowPlaying.module.scss';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import MovieCard from '../../../component/MovieCard/MovieCard';
+import { GenRes } from '../Movies';
 
 const cx = classNames.bind(style);
 
 function NowPlaying() {
+  const isGenre = useContext(GenRes);
+
   const [nowPlaying, setNowPlaying] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,6 +35,11 @@ function NowPlaying() {
     };
 
     Items();
+
+    if (isGenre !== undefined) {
+      const filter = nowPlaying.filter((p) => p.genre_ids[0] == isGenre);
+      setNowPlaying(filter);
+    }
   }, [page]);
 
   return (

@@ -91,7 +91,7 @@ function MoiveBox({ id, className = 'wrapper', poster, title, genres, interactiv
   // }, [account]);
 
   return (
-    <div className={cx(className)} ref={itemRef} id={id}>
+    <div className={cx(className)} ref={itemRef} id={id} genres={genres}>
       <div className={cx('backdrop')}>
         <Link className={cx('link-movie')} to={config.routes.movies + `${id}`} onClick={handleGetIdForDetail}>
           <img className={cx('backdrop-img')} alt="bdrop" src={poster} />
@@ -127,7 +127,6 @@ function MoiveBox({ id, className = 'wrapper', poster, title, genres, interactiv
       </div>
       <div className={cx('info-movie')}>
         <span className={cx('title-movie')}>{title}</span>
-        <span className={cx('genres-movie')}>{genres}</span>
       </div>
     </div>
   );
