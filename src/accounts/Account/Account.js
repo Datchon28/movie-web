@@ -60,7 +60,7 @@ function Account() {
     };
     try {
       const update = await axios
-        .post('http://localhost:5000/update-account', {
+        .put('http://localhost:5000/update-account', {
           userName: account.userName,
           first_Name: updateProfile.first_Name,
           last_Name: updateProfile.last_Name,

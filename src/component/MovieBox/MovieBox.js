@@ -46,7 +46,7 @@ function MoiveBox({ id, className = 'wrapper', poster, title, genres, interactiv
           let dataFirts = res.data;
 
           axios
-            .post('http://localhost:5000/favourite/add', {
+            .put('http://localhost:5000/favourite/add', {
               userName: account.userName,
               favourite_Movie: dataFirts,
             })
