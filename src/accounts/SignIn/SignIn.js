@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 import style from './SignIn.module.scss';
 
-import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faLock, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import config from '../../config';
 import axios from 'axios';
 
@@ -16,32 +16,45 @@ function SignIn() {
   const [password, SetPassWord] = useState('');
   const [checkLenght, setCheckLenght] = useState(true);
   const [checkPassValid, setCheckPassValid] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  const [rememberAccountToggle, setRememberAccountToggle] = useState(false);
 
   const [user, setUser] = useState([]);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get('https://movie-api-xzce.onrender.com/login', {
-        userName: value,
-        userPassword: password,
-      })
-      .then((acc) => {
-        setUser(acc.data);
-      });
-  }, [navigate]);
-
-  const handlesignin = () => {
-    const auth = user.filter((i, index) => i.userName === value && i.userPassword === password);
-    if (auth.length > 0) {
-      localStorage.setItem('current_account', JSON.stringify(auth[0]));
-      alert('Login success');
-      navigate('/');
-      window.location.reload();
-    } else {
-      alert('Account or Password does not match');
+  const handlesignin = async () => {
+    try {
+      setLoading(true);
+      await axios
+        .get('https://movie-api-xzce.onrender.com/login', {
+          userName: value,
+          userPassword: password,
+        })
+        .then((acc) => {
+          const user = acc.data;
+          const auth = user.filter((i, index) => i.userName === value && i.userPassword === password);
+          if (auth.length > 0) {
+            rememberAccountToggle
+              ? localStorage.setItem('current_account', JSON.stringify(auth[0]))
+              : sessionStorage.setItem('current_account', JSON.stringify(auth[0]));
+            alert('Login success');
+            navigate('/');
+            window.location.reload();
+          } else {
+            setLoading(true);
+            // alert('Account or Password does not match');
+          }
+        });
+      setLoading(true);
+    } catch (error) {
+      console.log(error);
     }
+  };
+
+  const toggleRemember = () => {
+    setRememberAccountToggle(!rememberAccountToggle);
   };
 
   const handleSeepass = () => {
@@ -113,6 +126,22 @@ function SignIn() {
         </label>
       </div>
 
+      <div className={cx('account-more')}>
+        <label className={cx('remember-login')}>
+          <input
+            type="checkbox"
+            className={cx('remember-toggle')}
+            onClick={toggleRemember}
+            checked={rememberAccountToggle ? true : false}
+          />
+          <span className={cx('remember-title')}>Remember me</span>
+        </label>
+
+        <div>
+          <h5>Need help?</h5>
+        </div>
+      </div>
+
       <div className={cx('button')}>
         <div className={cx('create-account')}>
           <span className={cx('link-to-signin')}>
@@ -122,7 +151,13 @@ function SignIn() {
             </Link>
           </span>
           <button className={cx('create-account-btn')} onClick={handlesignin}>
-            Login
+            {loading ? (
+              <span className={cx('loading-icon')}>
+                <FontAwesomeIcon icon={faSpinner} />
+              </span>
+            ) : (
+              'Login'
+            )}
           </button>
         </div>
       </div>

@@ -10,7 +10,9 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(style);
 
 function Favourite() {
-  const account = JSON.parse(localStorage.getItem('current_account'));
+  const account =
+    JSON.parse(localStorage.getItem('current_account')) || JSON.parse(sessionStorage.getItem('current_account'));
+
   const favourite = account.favourite_Movie;
   const [currentFavourite, setCurrentFavourite] = useState(favourite);
 
@@ -41,7 +43,7 @@ function Favourite() {
       favourite_Movie: remove,
     };
 
-    return localStorage.setItem('current_account', JSON.stringify(update));
+    return JSON.parse(localStorage.getItem('current_account')) || JSON.parse(sessionStorage.getItem('current_account'));
   };
 
   return (

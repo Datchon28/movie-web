@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(style);
 
 function SideBarExtra() {
-  const account = JSON.parse(localStorage.getItem('current_account'));
+  const account =
+    JSON.parse(localStorage.getItem('current_account')) || JSON.parse(sessionStorage.getItem('current_account'));
 
   return (
     <div className={cx('wrapper')}>

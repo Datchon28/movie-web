@@ -16,9 +16,11 @@ function Sidebar({ openonmobile }) {
   const { isTable, isMobile } = useContext(Responsive);
   const [openSidebar, setOpenSibar] = useState(false);
 
-  const account = JSON.parse(localStorage.getItem('current_account'));
+  const account =
+    JSON.parse(localStorage.getItem('current_account')) || JSON.parse(sessionStorage.getItem('current_account'));
 
   const handleLogout = () => {
+    sessionStorage.removeItem('current_account');
     localStorage.removeItem('current_account');
     window.location = config.routes.home;
   };

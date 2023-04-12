@@ -21,10 +21,11 @@ function MovieDetail() {
   const [trailer, setTrailer] = useState([]);
   const [similar, setSimilar] = useState([]);
   const [allCast, setAllCast] = useState(false);
-
   const [loading, setLoading] = useState(false);
 
   const { isMobile } = useContext(Responsive);
+  const account =
+    JSON.parse(localStorage.getItem('current_account')) || JSON.parse(sessionStorage.getItem('current_account'));
 
   const id = JSON.parse(localStorage.getItem('id_detail'));
 
@@ -115,19 +116,19 @@ function MovieDetail() {
               <div className={cx('score')}>
                 <span>{Math.floor(item.vote_average * 10)}%</span>
               </div>
-              <TippyNote note="Like">
+              <TippyNote note={account ? 'Like' : 'Login to Like'}>
                 <button className={cx('inter-btn', 'like-btn')}>
                   <FontAwesomeIcon icon={faHeart} />
                 </button>
               </TippyNote>
 
-              <TippyNote note="Add to your watchlist">
+              <TippyNote note={account ? 'Add to your watchlist' : 'Login to Add to your watchlist'}>
                 <button className={cx('inter-btn', 'watch-list-btn')}>
                   <FontAwesomeIcon icon={faBookBookmark} />
                 </button>
               </TippyNote>
 
-              <TippyNote note="Rate for this movie">
+              <TippyNote note={account ? 'Rate for this movie' : 'Login Rate for this movie'}>
                 <button className={cx('inter-btn', 'rate-btn')}>
                   <FontAwesomeIcon icon={faStar} />
                 </button>
@@ -143,7 +144,7 @@ function MovieDetail() {
               </button>
 
               <div className={cx('share')}>
-                <TippyNote note="Share This Movie" placement="right">
+                <TippyNote note={account ? 'Share This Movie' : 'Login Share This Movie'} placement="right">
                   <button className={cx('inter-btn', 'share-btn')}>
                     <FontAwesomeIcon icon={faShare} />
                   </button>

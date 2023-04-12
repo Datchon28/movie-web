@@ -8,7 +8,8 @@ const cx = classNames.bind(style);
 
 function Account() {
   // Current Profile
-  const account = JSON.parse(localStorage.getItem('current_account'));
+  const account =
+    JSON.parse(localStorage.getItem('current_account')) || JSON.parse(sessionStorage.getItem('current_account'));
 
   //State
   // State handle

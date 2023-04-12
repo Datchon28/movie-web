@@ -24,37 +24,6 @@ function SignUp() {
   const [checkPassConfirm, setCheckPassConfirm] = useState(true);
   const [agreeRules, setAgreeRules] = useState(false);
 
-  // InFO SignUp
-  // const signup_info = {
-  //   id: 1,
-  //   username: value,
-  //   first_name: firstName,
-  //   last_name: lastName,
-  //   password: password,
-  //   email: email,
-  //   sign_in: false,
-  //   favourite_movie: [],
-  // };
-
-  // const setjson = window.JSON.stringify(signup_info);
-
-  // const handleSubmit = () => {
-  //   if (
-  //     (checkEmailValid === true) &
-  //     (checkLenght === true) &
-  //     (checkPassValid === true) &
-  //     (agreeRules === true) &
-  //     (checkPassConfirm === true)
-  //   ) {
-  //     localStorage.setItem('account', setjson);
-  //     alert('Sign Up Success');
-  //     window.location = config.routes.signin;
-  //   } else {
-  //     alert('Sign Up Failed');
-  //     return;
-  //   }
-  // };
-
   const handleSubmit = async () => {
     try {
       await axios

@@ -21,6 +21,7 @@ import SignIn from './accounts/SignIn/SignIn';
 import Account from './accounts/Account/Account';
 import { useState } from 'react';
 import Favourite from './pages/Favourite/Favourite';
+import Settings from './pages/Settings/Settings';
 
 function App() {
   const isLogin = JSON.parse(localStorage.getItem('current_account'));
@@ -123,6 +124,7 @@ function App() {
 
             {/* Account */}
             <Route exact path={config.routes.your_account} element={<Account />} />
+            <Route exact path={config.routes.setting} element={<Settings />} />
           </Routes>
         </DefaultLayout>
       </BrowserRouter>

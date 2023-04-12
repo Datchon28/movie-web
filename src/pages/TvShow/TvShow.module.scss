@@ -2,6 +2,57 @@
   margin-top: 84px;
 }
 
+.filter-genres {
+  padding: 0 30px;
+}
+
+.filter-btn {
+  background-color: transparent;
+  border: 1px solid;
+  color: #fff;
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
+}
+
+.list-genres {
+  margin: 10px 0;
+  margin-right: 20px;
+  padding: 4px 12px;
+  text-align: center;
+  border-radius: 5px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--text-color);
+  cursor: pointer;
+
+  option {
+    background-color: var(--default-backgourd-color-content);
+    color: var(--white-color);
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .genres-name {
+    padding: 2px 6px;
+  }
+}
+
+.submit-genre-btn {
+  padding: 6px 10px;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--white-color);
+  border: 1px solid #dadada;
+  font-size: 12px;
+
+  &:hover {
+    font-weight: 600;
+    background-color: var(--primary-2-color);
+  }
+}
+
 .content {
 }
 
