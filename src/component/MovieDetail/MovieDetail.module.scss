@@ -33,18 +33,142 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 99%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.75);
   }
 }
 
 .container {
-  top: 0;
-  padding: 0 20px;
-  transform: translateY(8%);
+  padding-inline: 4.5rem;
+  transform: translateY(-50%);
   display: flex;
+  justify-content: space-between;
   position: absolute;
   width: 100%;
+  top: 50%;
+
+  .information {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      width: 75%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: var(--text-color);
+
+      h3 {
+        font-size: 40px;
+        font-weight: 700;
+        color: var(--white-color);
+      }
+
+      .tag-line {
+        color: var(--white-color);
+        font-weight: 500;
+      }
+
+      .overview {
+        color: var(--white-color);
+        font-size: 16px;
+
+        span {
+          font-size: 16px;
+          font-weight: 300;
+
+          &:first-child {
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  .score {
+    width: 110px;
+    height: 110px;
+    background: var(--default-backgourd-color-sidebar);
+    border-radius: 100rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border: 1px solid var(--white-color);
+    margin-right: 15px;
+  }
+
+  .interactives {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .interactives-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inter-btn {
+    padding: 4px 8px;
+    width: 56px;
+    height: 56px;
+    margin: 0 16px;
+    font-size: 24px;
+    border-radius: 100rem;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid var(--white-color);
+    color: var(--white-color);
+
+    &:hover {
+      background-color: var(--primary-color);
+      transition: background-color 0.25s;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .watch-button {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+  }
+
+  .watch-button--btn {
+    width: 216px;
+    min-height: 58px;
+    padding: 8px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background-color: var(--primary-color);
+    color: #dadada;
+    font-weight: 600;
+    transition: all 0.145s linear;
+
+    &:hover {
+      color: var(--white-color);
+      background-color: #5c57d3;
+    }
+
+    .icon-play {
+      margin-right: 6px;
+    }
+    .watch-text {
+      margin-left: 6px;
+    }
+  }
 }
 
 .poster {
@@ -54,108 +178,6 @@
   img {
     width: 100%;
     border-radius: 10px;
-  }
-}
-
-.information {
-  flex: 1 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.title {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: var(--text-color);
-
-  .tag-line {
-    color: var(--white-color);
-  }
-
-  h3 {
-    font-size: 30px;
-    color: var(--white-color);
-  }
-
-  .overview {
-    color: var(--white-color);
-    font-size: 17px;
-  }
-}
-
-.score {
-  width: 56px;
-  height: 56px;
-  background: var(--default-backgourd-color-sidebar);
-  border-radius: 100rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  border: 1px solid var(--white-color);
-  margin-right: 15px;
-}
-
-.interactives {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
-.interactives-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.inter-btn {
-  padding: 14px 16px;
-  margin: 0 15px;
-  font-size: 24px;
-  border-radius: 100rem;
-  text-align: center;
-  background-color: transparent;
-  border: 1px solid var(--white-color);
-  color: var(--white-color);
-
-  &:hover {
-    background-color: var(--primary-color);
-    transition: background-color 0.25s;
-  }
-}
-
-.watch-button {
-  margin-top: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.watch-button--btn {
-  padding: 16px 64px;
-  font-size: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 20px;
-  background-color: var(--primary-color);
-  color: #dadada;
-  font-weight: 600;
-
-  &:hover {
-    color: var(--white-color);
-  }
-
-  .icon-play {
-    margin-right: 6px;
-  }
-  .watch-text {
-    margin-left: 6px;
   }
 }
 

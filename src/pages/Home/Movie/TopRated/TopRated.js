@@ -1,13 +1,13 @@
 import classNames from 'classnames/bind';
 import style from './TopRated.module.scss';
-
-import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import SlickMovie from '../../../../component/SlickMovie/SlickMovie';
 import MovieBox from '../../../../component/MovieBox/MovieBox';
 import { Responsive } from '../../../../Layout/DefaultLayout/DefaultLayout';
 import config from '../../../../config';
 import { Link } from 'react-router-dom';
+import { enviroment } from '../../../../enviroments/enviroment';
+import { TopRatedService } from '../../../../services/Toprated.service';
 
 const cx = classNames.bind(style);
 
@@ -15,15 +15,12 @@ function TopRated() {
   const { isMobile, isTable } = useContext(Responsive);
 
   const [topRated, setTopRated] = useState([]);
+  const TopRatedApi = new TopRatedService();
 
   useEffect(() => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/top_rated?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&language=en-US&page=1',
-      )
-      .then((data) => {
-        setTopRated(data.data.results);
-      });
+    TopRatedApi.getListMovie(1).then((res) => {
+      setTopRated(res.results);
+    });
   }, []);
 
   return (
@@ -39,7 +36,7 @@ function TopRated() {
           <div className={cx('item')} key={index}>
             <MovieBox
               id={item.id}
-              poster={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+              poster={`${enviroment.urlBackDrop}${item.poster_path}`}
               slideScroll={5}
               vote={item.vote_average}
             />

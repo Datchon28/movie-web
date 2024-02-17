@@ -8,12 +8,13 @@ import 'slick-carousel/slick/slick-theme.css';
 import { useState } from 'react';
 
 const cx = classNames.bind(style);
+
 // function SamplePrevArrow(props) {
 //   const { className, style, onClick } = props;
-//   return <div className={className} style={{ ...style, display: 'block', background: 'green' }} onClick={onClick} />;
+//   return <div className={className} style={{ ...style, display: 'block' }} onClick={onClick} />;
 // }
 
-function SlickMovie({ quality = 5, children, slideScroll = 1, autoplay = false }) {
+function SlickBannerMovies({ quality = 5, children, slideScroll = 1, autoplay = false }) {
   const [change, setChange] = useState(0);
   const settings = {
     dots: false,
@@ -24,10 +25,11 @@ function SlickMovie({ quality = 5, children, slideScroll = 1, autoplay = false }
     pauseOnHover: true,
     slidesToShow: quality,
     slidesToScroll: slideScroll,
-    // nextArrow: true,
-    // prevArrow: <SamplePrevArrow />,
+    nextArrow: false,
+    prevArrow: false,
     afterChange: (current) => {
-      // setChange(current + 1);
+      setChange(current + 1);
+      // console.log(current);
     },
   };
 
@@ -38,4 +40,4 @@ function SlickMovie({ quality = 5, children, slideScroll = 1, autoplay = false }
   );
 }
 
-export default SlickMovie;
+export default SlickBannerMovies;

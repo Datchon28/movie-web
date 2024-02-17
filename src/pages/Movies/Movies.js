@@ -5,15 +5,17 @@ import config from '../../config/index';
 import NavMovieTab from './NavMovieTab';
 import { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
+import { InformationDetailService } from '../../services/InformationDetail.service';
 
 const cx = classNames.bind(style);
 export const GenRes = createContext();
 
-function Movies({ children }) {
+function Movies({ children, title }) {
   const [filter, setFilter] = useState(false);
   const [genres, setGenres] = useState([]);
   const [isGenre, setIsGenre] = useState();
   const [chooseGenre, setChooseGenre] = useState(28);
+  const InformationService = new InformationDetailService();
 
   const handleFilter = () => {
     setFilter(!filter);
@@ -25,15 +27,9 @@ function Movies({ children }) {
   };
 
   useEffect(() => {
-    const Genres = async () => {
-      await axios
-        .get('https://api.themoviedb.org/3/genre/movie/list?api_key=d61c25a37d3fdd1cd00f6a1ac7c3d267&language=en-US')
-        .then((gr) => {
-          const data = gr.data.genres;
-          setGenres(data);
-        });
-    };
-    Genres();
+    InformationService.getGenres().then((data) => {
+      setGenres(data);
+    });
   }, []);
 
   const handleFilterGenre = () => {
@@ -45,13 +41,7 @@ function Movies({ children }) {
       <div className={cx('wrapper')}>
         <div className={cx('tab')}>
           <div className={cx('name-tab')}>
-            <h2>Movies</h2>
-          </div>
-          <div className={cx('tab-movies')}>
-            <NavMovieTab to={config.routes.popular_movie} title="Popular" />
-            <NavMovieTab to={config.routes.nowplaying_movie} title="Now Playing" />
-            <NavMovieTab to={config.routes.upcoming_movie} title="Up Coming" />
-            <NavMovieTab to={config.routes.toprated_movie} title="Top Rated" />
+            <h2>{title}</h2>
           </div>
 
           <div className={cx('filter-category')}>

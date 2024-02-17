@@ -1,18 +1,42 @@
 const routes = {
   home: '/',
-  movies: '/movies/',
-  popular_movie: '/movies/popular',
-  nowplaying_movie: '/movies/nowplaying',
-  upcoming_movie: '/movies/upcoming',
-  toprated_movie: '/movies/toprated',
-  movieItem: '/movies/:idItem',
+  moviesChild: [
+    {
+      label: 'Popular',
+      link: '/movies/popular',
+    },
+    {
+      label: 'Now Playing',
+      link: '/movies/nowplaying',
+    },
+    {
+      label: 'Upcoming',
+      link: '/movies/upcoming',
+    },
+    {
+      label: 'Top Rated',
+      link: '/movies/toprated',
+    },
+  ],
 
-  tv: '/tv//*',
-  popular_tv: '/tv/popular',
-  nowplaying_tv: '/tv/nowplaying',
-  upcoming_tv: '/tv/upcoming',
-  toprated_tv: '/tv/toprated',
-  favourite: '/favourite',
+  tvsChild: [
+    {
+      label: 'Popular',
+      link: '/tv/popular',
+    },
+    {
+      label: 'Now Playing',
+      link: '/tv/nowplaying',
+    },
+    {
+      label: 'Upcoming',
+      link: '/tv/upcoming',
+    },
+    {
+      label: 'Top Rated',
+      link: '/tv/toprated',
+    },
+  ],
 
   // Accounts
   signup: '/signup',

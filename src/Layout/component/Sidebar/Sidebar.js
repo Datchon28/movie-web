@@ -4,17 +4,30 @@ import style from './Sidebar.module.scss';
 import { Link } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faFilm, faGear, faHouse, faSignOut, faTv, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faCaretDown,
+  faCaretRight,
+  faFilm,
+  faGear,
+  faHouse,
+  faSignOut,
+  faTv,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import config from '../../../config';
 import { Fragment, useContext, useState } from 'react';
 import { Responsive } from '../../DefaultLayout/DefaultLayout';
+import MenuDropDown from './MenuDropDown';
 
 const cx = classNames.bind(style);
 
 function Sidebar({ openonmobile }) {
   const { isTable, isMobile } = useContext(Responsive);
   const [openSidebar, setOpenSibar] = useState(false);
+  const [openMenuMovie, setOpenMenuMovie] = useState(false);
+  const [openMenuTv, setOpenMenuTv] = useState(false);
 
   const account =
     JSON.parse(localStorage.getItem('current_account')) || JSON.parse(sessionStorage.getItem('current_account'));
@@ -27,6 +40,14 @@ function Sidebar({ openonmobile }) {
 
   const handleOpenSideBar = () => {
     setOpenSibar(!openSidebar);
+  };
+
+  const openMenuItemMovie = () => {
+    setOpenMenuMovie(!openMenuMovie);
+  };
+
+  const openMenuItemTv = () => {
+    setOpenMenuTv(!openMenuTv);
   };
 
   return (
@@ -66,8 +87,35 @@ function Sidebar({ openonmobile }) {
         </div>
         <ul className={cx('menu')}>
           <MenuItem to={config.routes.home} title="Home" icon={<FontAwesomeIcon icon={faHouse} />} />
-          <MenuItem to={config.routes.popular_movie} title="Movie" icon={<FontAwesomeIcon icon={faFilm} />} />
-          <MenuItem to={config.routes.popular_tv} title="TV Show" icon={<FontAwesomeIcon icon={faTv} />} />
+
+          <li className={cx('menu-item')}>
+            <div className={cx('title-item')} onClick={openMenuItemMovie}>
+              <span>
+                <FontAwesomeIcon icon={faFilm} className={cx('ml-4', 'mr-3')} /> Movie
+              </span>
+              <span>
+                {openMenuMovie ? <FontAwesomeIcon icon={faCaretDown} /> : <FontAwesomeIcon icon={faCaretRight} />}
+              </span>
+            </div>
+
+            <MenuDropDown menuItem={config.routes.moviesChild} visible={openMenuMovie} />
+          </li>
+
+          <li className={cx('menu-item')}>
+            <div className={cx('title-item')} onClick={openMenuItemTv}>
+              <span>
+                <FontAwesomeIcon icon={faTv} className={cx('ml-4', 'mr-3')} /> TV Show
+              </span>
+              <span>
+                {openMenuTv ? <FontAwesomeIcon icon={faCaretDown} /> : <FontAwesomeIcon icon={faCaretRight} />}
+              </span>
+            </div>
+
+            <MenuDropDown menuItem={config.routes.tvsChild} visible={openMenuTv} />
+          </li>
+
+          {/* <MenuItem to={config.routes.popular_movie} title="Movie" icon={<FontAwesomeIcon icon={faFilm} />} /> */}
+          {/* <MenuItem to={config.routes.popular_tv} title="TV Show" icon={<FontAwesomeIcon icon={faTv} />} /> */}
           <MenuItem to="/favourite" title="Favourite" icon={<FontAwesomeIcon icon={faHeart} />} />
         </ul>
         <ul className={cx('account')}>

@@ -13,7 +13,16 @@ import axios from 'axios';
 
 const cx = classNames.bind(style);
 
-function MoiveBox({ id, className = 'wrapper', poster, title, genres, interactive = true }) {
+function MoiveBox({
+  id,
+  className = 'wrapper',
+  poster,
+  title,
+  genres,
+  interactive = true,
+  imageTyp = 'image',
+  loading = true,
+}) {
   const itemRef = useRef();
   const [openMenuChild, setOpenMenuChild] = useState(false);
 
@@ -62,40 +71,25 @@ function MoiveBox({ id, className = 'wrapper', poster, title, genres, interactiv
     }
   };
 
-  // const Lola = async (data) => {
-  //   try {
-  //     await axios
-  //       .post('http://localhost:5000/add-to-favourite', {
-  //         userName: account.userName,
-  //         favourite_Movie: 'Ha Noi',
-  //       })
-  //       .then((data) => {
-  //         console.log(data);
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(async () => {
-  //   const update = await axios
-  //     .post('http://localhost:5000/update-account', {
-  //       userName: account.userName,
-  //       favourite_Movie: account.favourite_Movie,
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-
-  //   // return () => update();
-  // }, [account]);
-
   return (
-    <div className={cx(className)} ref={itemRef} id={id} genres={genres}>
+    <div className={cx(className, 'main-wrapper')} ref={itemRef} id={id} genres={genres}>
       <div className={cx('backdrop')}>
-        <Link className={cx('link-movie')} to={config.routes.movies + `${id}`} onClick={handleGetIdForDetail}>
-          <img className={cx('backdrop-img')} alt="bdrop" src={poster} />
-        </Link>
+        {!loading ? (
+          <div role="status" class="max-w-sm animate-pulse">
+            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+            <span class="sr-only">Loading...</span>
+          </div>
+        ) : (
+          <Link
+            className={cx('link-movie', 'overflow-hidden')}
+            to={config.routes.movies + `${id}`}
+            onClick={handleGetIdForDetail}
+          >
+            <img className={cx('backdrop-img')} alt="bdrop" src={poster} />
+          </Link>
+        )}
+
         {interactive && (
           <div className={cx('interactive')}>
             <div className={cx('menu-child')}>

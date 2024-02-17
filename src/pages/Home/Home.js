@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 import style from './Home.module.scss';
 
 // Movie
-import MvBanner from './Banner/Banner';
 import MvTopRated from '../Home/Movie/TopRated/TopRated';
 import MvUpComing from '../Home/Movie/UpComing/UpComing';
 import MvPopular from '../Home/Movie/Popular/Popular';
@@ -17,10 +16,8 @@ const cx = classNames.bind(style);
 function Home() {
   return (
     <div className={cx('wrapper')}>
-      {/* Movie */}
-      <MvBanner />
-      <MvTopRated />
       <Trending />
+      <MvTopRated />
       <MvUpComing />
       <MvPopular />
 

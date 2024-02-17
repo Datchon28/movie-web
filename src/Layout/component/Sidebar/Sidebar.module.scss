@@ -35,6 +35,50 @@
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
   padding: 12px 0;
+  cursor: pointer;
+
+  .title-item {
+    // background-color: var(--primary-color);
+    color: var(--white-color) !important;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .menu-item-child {
+    margin-top: 6px;
+    overflow: hidden;
+    height: 0;
+    transition: all 0.25s ease-in-out;
+
+    li {
+      background-color: transparent;
+      color: var(--white-color) !important;
+      border-radius: 18px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 400;
+      margin-left: 34px;
+      margin-bottom: 4px;
+    }
+
+    .active {
+      li {
+        background-color: var(--primary-color);
+        font-weight: 500;
+      }
+    }
+  }
+
+  .openMenuuu {
+    height: 164px;
+  }
 }
 
 .menu-for-tablet-and-mobile {

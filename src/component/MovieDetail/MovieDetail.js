@@ -43,6 +43,7 @@ function MovieDetail() {
         .then((res) => {
           setItem(res.data);
           setCompanies(res.data.production_companies);
+          console.log(res.data);
         });
 
       await axios
@@ -96,80 +97,83 @@ function MovieDetail() {
             </div>
           )}
         </div>
-      </div>
-      <div className={cx('container')}>
-        <div className={cx('poster')}>
-          <img alt="anh" src={`https://image.tmdb.org/t/p/original${item.poster_path}`} />
-        </div>
 
-        <div className={cx('information')}>
-          <div className={cx('title')}>
-            <h3>{item.original_title}</h3>
-            <span className={cx('tag-line')}>{item.tagline}</span>
-            <span className={cx('release-date')}>{item.release_date}</span>
-            <span className={cx('timer')}>1h30</span>
-            <span className={cx('overview')}>OverView : {item.overview}</span>
-          </div>
-
-          <div className={cx('interactives')}>
-            <div className={cx('interactives-button')}>
-              <div className={cx('score')}>
-                <span>{Math.floor(item.vote_average * 10)}%</span>
-              </div>
-              <TippyNote note={account ? 'Like' : 'Login to Like'}>
-                <button className={cx('inter-btn', 'like-btn')}>
-                  <FontAwesomeIcon icon={faHeart} />
-                </button>
-              </TippyNote>
-
-              <TippyNote note={account ? 'Add to your watchlist' : 'Login to Add to your watchlist'}>
-                <button className={cx('inter-btn', 'watch-list-btn')}>
-                  <FontAwesomeIcon icon={faBookBookmark} />
-                </button>
-              </TippyNote>
-
-              <TippyNote note={account ? 'Rate for this movie' : 'Login Rate for this movie'}>
-                <button className={cx('inter-btn', 'rate-btn')}>
-                  <FontAwesomeIcon icon={faStar} />
-                </button>
-              </TippyNote>
+        <div className={cx('container')}>
+          <div className={cx('information')}>
+            <div className={cx('title')}>
+              <h3>{item.original_title}</h3>
+              <span className={cx('tag-line')}>{item.tagline}</span>
+              <p className={cx('my-4')}>1h30 | {item.release_date}</p>
+              <p className={cx('overview')}>
+                <span className={cx('text-white fw-semibold')}>OverView</span> : <span>{item.overview}</span>
+              </p>
             </div>
 
-            <div className={cx('watch-button')}>
-              <button className={cx('watch-button--btn')}>
-                <span className={cx('icon-play')}>
-                  <FontAwesomeIcon icon={faPlay} />
-                </span>
-                <span className={cx('watch-text')}>Watch</span>
-              </button>
+            <div className={cx('interactives')}>
+              <div className={cx('d-flex justify-start align-items-start ')}>
+                <div className={cx('interactives-button')}>
+                  <TippyNote note={account ? 'Share This Movie' : 'Login Share This Movie'}>
+                    <button className={cx('m-0', 'inter-btn', 'share-btn')}>
+                      <FontAwesomeIcon icon={faShare} />
+                    </button>
+                  </TippyNote>
 
-              <div className={cx('share')}>
-                <TippyNote note={account ? 'Share This Movie' : 'Login Share This Movie'} placement="right">
-                  <button className={cx('inter-btn', 'share-btn')}>
-                    <FontAwesomeIcon icon={faShare} />
+                  <TippyNote note={account ? 'Like' : 'Login to Like'}>
+                    <button className={cx('inter-btn', 'like-btn')}>
+                      <FontAwesomeIcon icon={faHeart} />
+                    </button>
+                  </TippyNote>
+
+                  <TippyNote note={account ? 'Add to your watchlist' : 'Login to Add to your watchlist'}>
+                    <button className={cx('inter-btn', 'watch-list-btn')}>
+                      <FontAwesomeIcon icon={faBookBookmark} />
+                    </button>
+                  </TippyNote>
+
+                  <TippyNote note={account ? 'Rate for this movie' : 'Login Rate for this movie'}>
+                    <button className={cx('inter-btn', 'rate-btn')}>
+                      <FontAwesomeIcon icon={faStar} />
+                    </button>
+                  </TippyNote>
+                </div>
+
+                <div className={cx('watch-button')}>
+                  <button className={cx('watch-button--btn')}>
+                    <span className={cx('icon-play')}>
+                      <FontAwesomeIcon icon={faPlay} />
+                    </span>
+                    Watch
                   </button>
-                </TippyNote>
+                </div>
+              </div>
+
+              <div className={cx('score')}>
+                <span>{Number(item.vote_average).toPrecision(2)}</span>
+              </div>
+            </div>
+
+            <div className={cx('content')}>
+              <div className={cx('companies')}>
+                <h3 className={cx('companies-title')}>Companies</h3>
+
+                <ul className={cx('companies-list')}>
+                  {companie.map((comp, index) => (
+                    <li id={comp.id} key={index} className={cx('companies-item')}>
+                      <img
+                        className={cx('logo-companies')}
+                        alt="poster"
+                        src={`https://image.tmdb.org/t/p/original${comp.logo_path}`}
+                      />
+                      <span className={cx('companies-name')}>{comp.name}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
 
-          <div className={cx('content')}>
-            <div className={cx('companies')}>
-              <h3 className={cx('companies-title')}>Companies</h3>
-
-              <ul className={cx('companies-list')}>
-                {companie.map((comp, index) => (
-                  <li id={comp.id} key={index} className={cx('companies-item')}>
-                    <img
-                      className={cx('logo-companies')}
-                      alt="poster"
-                      src={`https://image.tmdb.org/t/p/original${comp.logo_path}`}
-                    />
-                    <span className={cx('companies-name')}>{comp.name}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className={cx('poster')}>
+            <img alt="anh" src={`https://image.tmdb.org/t/p/original${item.poster_path}`} />
           </div>
         </div>
       </div>

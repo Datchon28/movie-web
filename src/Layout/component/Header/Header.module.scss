@@ -1,6 +1,6 @@
 .wrapper {
   width: calc(100% - calc(var(--width-default-sidebar) + var(--width-default-sidebarforcontent)));
-  height: 70px;
+  height: 84px;
   background-color: var(--default-backgourd-color-content);
   position: fixed;
   z-index: 9;
@@ -8,7 +8,7 @@
 
 .container {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   height: 100%;
   padding: 0 calc(var(--padding-content-left-and-right) + 14px);

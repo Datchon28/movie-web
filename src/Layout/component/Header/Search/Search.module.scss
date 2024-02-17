@@ -16,7 +16,7 @@
 
 .search-result {
   list-style: none;
-  background-color: var(--default-backgourd-color-sidebar);
+  background-color: var(--primary-color);
   border-radius: 5px;
   padding: 5px;
   overflow: hidden scroll;
@@ -31,16 +31,16 @@
   }
 
   /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--white-color);
-    border-radius: 5px;
-  }
+  // &::-webkit-scrollbar-thumb {
+  //   background-color: var(--white-color);
+  //   border-radius: 5px;
+  // }
 
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: var(--white-color);
-    cursor: pointer;
-  }
+  // /* Handle on hover */
+  // &::-webkit-scrollbar-thumb:hover {
+  //   background-color: var(--white-color);
+  //   cursor: pointer;
+  // }
 }
 
 .search-result-item {

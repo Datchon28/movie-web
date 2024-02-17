@@ -19,9 +19,13 @@ import TvToprated from './pages/TvShow/TopRated/TopRated';
 import SignUp from './accounts/SignUp/SignUp';
 import SignIn from './accounts/SignIn/SignIn';
 import Account from './accounts/Account/Account';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import Favourite from './pages/Favourite/Favourite';
 import Settings from './pages/Settings/Settings';
+import { lazy } from 'react';
+import { Suspense } from 'react';
+
+const HomeComp = lazy(() => import('./pages/Home/Home.js'));
 
 function App() {
   const isLogin = JSON.parse(localStorage.getItem('current_account'));
@@ -29,104 +33,88 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter basename="/">
-        <DefaultLayout>
-          <Routes>
-            <Route exact path={config.routes.home} element={<Home />} />
-            <Route exact path={config.routes.movies} element={<Movies />}></Route>
-            <Route exact path={config.routes.movieItem} element={<MovieDetail />} />
-            <Route exact path={config.routes.signup} element={<SignUp />} />
-            <Route exact path={config.routes.signin} element={<SignIn />} />
-            <Route
-              exact
-              path={config.routes.favourite}
-              element={isLogin ? <Favourite /> : 'You need Login to save Favourite'}
-            />
+        <Routes>
+          <Route
+            exact
+            path={config.routes.home}
+            element={
+              <DefaultLayout>
+                <Home />
+              </DefaultLayout>
+            }
+          />
+          <Route
+            exact
+            path={config.routes.movieItem}
+            element={
+              <DefaultLayout>
+                <MovieDetail />
+              </DefaultLayout>
+            }
+          />
 
-            {/* Movie Tab */}
+          {/* Movies Tab */}
+          {config.routes.moviesChild.map((item, index) => (
             <Route
+              key={index}
               exact
-              path={config.routes.popular_movie}
+              path={item.link}
               element={
-                <Movies>
-                  <Popular />
-                </Movies>
+                <DefaultLayout>
+                  <Movies title={item.label}>
+                    {item.label === 'Popular' ? (
+                      <Popular />
+                    ) : item.label === 'Now Playing' ? (
+                      <NowPlaying />
+                    ) : item.label === 'Upcoming' ? (
+                      <UpComing />
+                    ) : (
+                      <TopRated />
+                    )}
+                  </Movies>
+                </DefaultLayout>
               }
             />
-            <Route
-              exact
-              path={config.routes.nowplaying_movie}
-              element={
-                <Movies>
-                  <NowPlaying />
-                </Movies>
-              }
-            />
-            <Route
-              exact
-              path={config.routes.upcoming_movie}
-              element={
-                <Movies>
-                  <UpComing />
-                </Movies>
-              }
-            />
-            <Route
-              exact
-              path={config.routes.toprated_movie}
-              element={
-                <Movies>
-                  <TopRated />
-                </Movies>
-              }
-            />
-            {/* Movie Tab */}
+          ))}
+          {/* End Movies Tab */}
 
-            <Route exact path={config.routes.tv} element={<TvShow />} />
+          {/* Tv Show */}
+          {config.routes.tvsChild.map((item, index) => (
+            <Route
+              key={index}
+              exact
+              path={item.link}
+              element={
+                <DefaultLayout>
+                  <Movies>
+                    {item.label === 'Popular' ? (
+                      <TvPopular />
+                    ) : item.label === 'Now Playing' ? (
+                      <TvShow />
+                    ) : item.label === 'Upcoming' ? (
+                      <UpComing />
+                    ) : (
+                      <TvToprated />
+                    )}
+                  </Movies>
+                </DefaultLayout>
+              }
+            />
+          ))}
+          {/* End Tv Show */}
 
-            {/* Tv Show */}
-            <Route
-              exact
-              path={config.routes.popular_tv}
-              element={
-                <TvShow>
-                  <TvPopular />
-                </TvShow>
-              }
-            />
-            <Route
-              exact
-              path={config.routes.nowplaying_tv}
-              element={
-                <TvShow>
-                  <NowPlaying />
-                </TvShow>
-              }
-            />
-            <Route
-              exact
-              path={config.routes.upcoming_tv}
-              element={
-                <TvShow>
-                  <UpComing />
-                </TvShow>
-              }
-            />
-            <Route
-              exact
-              path={config.routes.toprated_tv}
-              element={
-                <TvShow>
-                  <TvToprated />
-                </TvShow>
-              }
-            />
-            {/* Tv Show */}
+          {/* Account */}
+          <Route exact path={config.routes.signup} element={<SignUp />} />
+          <Route exact path={config.routes.signin} element={<SignIn />} />
+          <Route exact path={config.routes.your_account} element={<Account />} />
+          <Route exact path={config.routes.setting} element={<Settings />} />
 
-            {/* Account */}
-            <Route exact path={config.routes.your_account} element={<Account />} />
-            <Route exact path={config.routes.setting} element={<Settings />} />
-          </Routes>
-        </DefaultLayout>
+          <Route
+            exact
+            path={config.routes.favourite}
+            element={isLogin ? <Favourite /> : 'You need Login to save Favourite'}
+          />
+        </Routes>
       </BrowserRouter>
     </div>
   );
