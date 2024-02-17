@@ -37,7 +37,7 @@ function Popular() {
     Items();
 
     if (isGenre !== undefined) {
-      const filter = popular.filter((p) => p.genre_ids[0] == isGenre);
+      const filter = popular.filter((p) => p.genre_ids[0] === isGenre);
       setPopular(filter);
     }
   }, [page, isGenre]);

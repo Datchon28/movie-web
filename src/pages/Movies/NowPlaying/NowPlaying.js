@@ -37,7 +37,7 @@ function NowPlaying() {
     Items();
 
     if (isGenre !== undefined) {
-      const filter = nowPlaying.filter((p) => p.genre_ids[0] == isGenre);
+      const filter = nowPlaying.filter((p) => p.genre_ids[0] === isGenre);
       setNowPlaying(filter);
     }
   }, [page]);

@@ -37,7 +37,7 @@ function UpComing() {
     Items();
 
     if (isGenre !== undefined) {
-      const filter = UpComing.filter((p) => p.genre_ids[0] == isGenre);
+      const filter = UpComing.filter((p) => p.genre_ids[0] === isGenre);
       setUpComing(filter);
     }
   }, [page, isGenre]);

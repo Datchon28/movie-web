@@ -37,7 +37,7 @@ function TopRated() {
     Items();
 
     if (isGenre !== undefined) {
-      const filter = topRated.filter((p) => p.genre_ids[0] == isGenre);
+      const filter = topRated.filter((p) => p.genre_ids[0] === isGenre);
       setTopRated(filter);
     }
   }, [page, isGenre]);
