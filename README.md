@@ -9,12 +9,14 @@
  - Link GitHub : https://github.com/Datchon28/movie-web
 
   # Technologies used :
- - ReactJS Framework
+  FE: 
+ - ReactJS
  - React-Router-Dom
  - Classnames, Sass
  - Axios library
  - Responsive Web For Multiple Devices (Laptop, Tablet, Mobie)
- 
+
+ BE: 
  - NodeJs
  - ExpressJS Framework
  - MongoDB , mongoose
