@@ -4,8 +4,8 @@
   JUST MY PRESONAL PROJECT !!! THANK YOU VERY MUCH TO COME AND SEE <3 <3 
   
   # Infomation : 
-
- - Link Deploy : movie-web-lovat.vercel.app/
+ - Link: https://movie-web-lovat.vercel.app
+   
  - Link GitHub : https://github.com/Datchon28/movie-web
 
   # Technologies used :
